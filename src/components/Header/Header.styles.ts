@@ -7,11 +7,12 @@ export const Container = styled.header`
 
 export const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
-  max-width: 70.625rem;
+  max-width: 72rem;
+  align-items: center;
+  justify-content: space-between;
+
   margin: 0 auto;
   padding: 0 1rem;
 `
