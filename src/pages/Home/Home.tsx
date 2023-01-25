@@ -8,6 +8,7 @@ import {
   AdvantageText,
   BlurredBackground,
   CoffeeImage,
+  CoffeeImageContainer,
   Container,
   LeftColumn,
   PresentationContainer,
@@ -68,7 +69,9 @@ export const Home = () => {
           </AdvantagesContainer>
         </PresentationContainer>
 
-        <CoffeeImage />
+        <CoffeeImageContainer>
+          <CoffeeImage src="/img/coffee-image.svg" alt="" width={476} height={360} />
+        </CoffeeImageContainer>
       </Container>
     </>
   )

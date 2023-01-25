@@ -14,8 +14,10 @@ export const BlurredBackground = styled.div`
 `
 
 export const Container = styled.section`
+  display: flex;
+  justify-content: space-between;
   padding: 5.875rem 0;
-  position: absolute;
+  position: relative;
   z-index: 1;
 `
 
@@ -26,6 +28,8 @@ export const PresentationContainer = styled.div`
 
   width: 100%;
   max-width: 35.5rem;
+
+  animation: fadeIn 2s forwards;
 `
 
 export const Title = styled.h1`
@@ -85,4 +89,24 @@ export const AdvantageText = styled.span`
   color: ${({ theme }) => theme.palette.gray[700]};
 `
 
-export const CoffeeImage = styled.div``
+export const CoffeeImageContainer = styled.div`
+  opacity: 0;
+  position: relative;
+  animation: fadeIn 1.2s forwards 0.4s;
+`
+
+export const CoffeeImage = styled.img`
+  @keyframes show {
+    from {
+      right: -10rem;
+    }
+
+    to {
+      right: 0;
+    }
+  }
+
+  user-select: none;
+  position: relative;
+  animation: show 1.2s forwards 0.4s;
+`
