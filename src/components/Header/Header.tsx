@@ -13,7 +13,7 @@ export const Header = () => {
 
         <CartContainer>
           <Address>
-            <MapPin size={22} weight="fill" color={palette.purple[400]} />
+            <MapPin size={22} weight="fill" color={palette.purple[300]} />
             Porto Alegre, RS
           </Address>
 
