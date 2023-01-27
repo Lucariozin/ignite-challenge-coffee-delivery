@@ -60,7 +60,7 @@ export const Presentation = () => {
               </AdvantageItem>
 
               <AdvantageItem>
-                <AdvantageIcon backgroundColor={palette.purple[400]}>
+                <AdvantageIcon backgroundColor={palette.purple[300]}>
                   <Coffee size={16} weight="fill" />
                 </AdvantageIcon>
 
