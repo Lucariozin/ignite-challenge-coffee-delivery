@@ -2,16 +2,19 @@ import styled from 'styled-components'
 
 export const Container = styled.div``
 
-export const LeftColumn = styled.section``
+export const LeftColumn = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 40rem;
+`
 
 export const OrderTitle = styled.h1`
   font-size: 1.125rem;
-  margin-bottom: 0.8rem;
   color: ${({ theme }) => theme.palette.gray[800]};
 `
 
 export const DeliveryInformationContainer = styled.div`
-  max-width: 40rem;
   padding: 2.5rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.palette.gray[200]};
@@ -109,4 +112,20 @@ export const CityAndFederativeUnitContainer = styled.div`
 
 export const OrderInformationContainer = styled.main``
 
-export const PaymentInformationContainer = styled.div``
+export const PaymentInformationContainer = styled.div`
+  padding: 2.5rem;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.palette.gray[200]};
+`
+
+export const PaymentContainer = styled.div``
+
+export const PaymentTextContainer = styled.div``
+
+export const PaymentTextTitle = styled.h3``
+
+export const PaymentTextText = styled.p``
+
+export const PaymentMethodContainer = styled.div``
+
+export const PaymentMethodItem = styled.div``

@@ -1,4 +1,4 @@
-import { MapPinLine } from 'phosphor-react'
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from 'phosphor-react'
 
 import {
   AddressComplementContainer,
@@ -15,7 +15,13 @@ import {
   Input,
   LeftColumn,
   OrderTitle,
+  PaymentContainer,
   PaymentInformationContainer,
+  PaymentMethodContainer,
+  PaymentMethodItem,
+  PaymentTextContainer,
+  PaymentTextText,
+  PaymentTextTitle,
 } from './Checkout.styles'
 
 export const Checkout = () => {
@@ -56,7 +62,33 @@ export const Checkout = () => {
           </AddressForm>
         </DeliveryInformationContainer>
 
-        <PaymentInformationContainer></PaymentInformationContainer>
+        <PaymentInformationContainer>
+          <PaymentContainer>
+            <CurrencyDollar size={24} />
+
+            <PaymentTextContainer>
+              <PaymentTextTitle>Pagamento</PaymentTextTitle>
+              <PaymentTextText>O pagamento é feito na entrega. Escolha a forma que deseja pagar</PaymentTextText>
+            </PaymentTextContainer>
+          </PaymentContainer>
+
+          <PaymentMethodContainer>
+            <PaymentMethodItem>
+              <CreditCard size={20} />
+              CARTÃO DE CRÉDITO
+            </PaymentMethodItem>
+
+            <PaymentMethodItem>
+              <Bank size={20} />
+              CARTÃO DE DÉBITO
+            </PaymentMethodItem>
+
+            <PaymentMethodItem>
+              <Money size={20} />
+              DINHEIRO
+            </PaymentMethodItem>
+          </PaymentMethodContainer>
+        </PaymentInformationContainer>
       </LeftColumn>
     </Container>
   )
