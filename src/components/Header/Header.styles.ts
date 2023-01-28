@@ -36,6 +36,10 @@ export const Address = styled.span`
   border-radius: 6px;
   color: ${({ theme }) => theme.palette.purple[500]};
   background-color: ${({ theme }) => theme.palette.purple[100]};
+
+  & svg {
+    fill: ${({ theme }) => theme.palette.purple[300]};
+  }
 `
 
 export const CartButton = styled.button`
@@ -43,6 +47,7 @@ export const CartButton = styled.button`
   height: 2.375rem;
   border: none;
   border-radius: 6px;
+  color: ${({ theme }) => theme.palette.yellow[500]};
   background-color: ${({ theme }) => theme.palette.yellow[100]};
 
   outline: 0;

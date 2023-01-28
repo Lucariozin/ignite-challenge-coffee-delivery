@@ -1,11 +1,8 @@
-import { useTheme } from 'styled-components'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
 import { Address, CartButton, CartContainer, Container, Logo, Wrapper } from './Header.styles'
 
 export const Header = () => {
-  const { palette } = useTheme()
-
   return (
     <Container>
       <Wrapper>
@@ -13,12 +10,12 @@ export const Header = () => {
 
         <CartContainer>
           <Address>
-            <MapPin size={22} weight="fill" color={palette.purple[300]} />
+            <MapPin size={22} weight="fill" />
             Porto Alegre, RS
           </Address>
 
-          <CartButton>
-            <ShoppingCart size={22} weight="fill" color={palette.yellow[500]} />
+          <CartButton type="button" title="Ir para a tela de checkout">
+            <ShoppingCart size={22} weight="fill" />
           </CartButton>
         </CartContainer>
       </Wrapper>

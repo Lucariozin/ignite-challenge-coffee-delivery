@@ -43,18 +43,18 @@ export const CoffeeItem = () => {
 
         <CartContainer>
           <ItemsAmountContainer>
-            <DecrementItems type="button">
+            <DecrementItems type="button" title="Remover uma unidade do carrinho">
               <Minus size={14} weight="fill" />
             </DecrementItems>
 
             <ItemsAmount>1</ItemsAmount>
 
-            <IncrementItems type="button">
+            <IncrementItems type="button" title="Adicionar uma unidade no carrinho">
               <Plus size={14} weight="fill" />
             </IncrementItems>
           </ItemsAmountContainer>
 
-          <CartButton type="button">
+          <CartButton type="button" title="Ir para a tela de checkout">
             <ShoppingCartSimple size={22} weight="fill" />
           </CartButton>
         </CartContainer>
