@@ -136,11 +136,11 @@ export const CartAnchor = styled(NavLink)`
   transition: background-color 0.2s, outline-color 0.2s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.purple[400]};
+    background-color: ${({ theme }) => theme.palette.purple[300]};
   }
 
   &:focus-visible {
-    background-color: ${({ theme }) => theme.palette.purple[400]};
+    background-color: ${({ theme }) => theme.palette.purple[300]};
     outline: 1px solid ${({ theme }) => theme.palette.purple[500]};
     outline-offset: 2px;
   }

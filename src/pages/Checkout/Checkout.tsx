@@ -1,3 +1,5 @@
+import { MapPinLine } from 'phosphor-react'
+
 import {
   AddressComplementContainer,
   AddressContainer,
@@ -10,7 +12,6 @@ import {
   DeliveryAddressTitle,
   DeliveryInformationContainer,
   HouseNumberAndDistrictContainer,
-  Icon,
   Input,
   LeftColumn,
   OrderTitle,
@@ -25,7 +26,7 @@ export const Checkout = () => {
 
         <DeliveryInformationContainer>
           <AddressContainer>
-            <Icon />
+            <MapPinLine size={24} />
 
             <AddressTextContainer>
               <DeliveryAddressTitle>Endereço de Entrega</DeliveryAddressTitle>
@@ -34,21 +35,21 @@ export const Checkout = () => {
           </AddressContainer>
 
           <AddressForm>
-            <Input />
-            <Input />
+            <Input placeholder="CEP" />
+            <Input placeholder="Rua" />
 
             <AddressInputsWrapper>
               <HouseNumberAndDistrictContainer>
-                <Input />
-                <Input />
+                <Input placeholder="Número" />
+                <Input placeholder="Bairro" />
               </HouseNumberAndDistrictContainer>
 
               <AddressComplementContainer>
-                <Input />
+                <Input placeholder="Complemento" />
 
                 <CityAndFederativeUnitContainer>
-                  <Input />
-                  <Input />
+                  <Input placeholder="Cidade" />
+                  <Input placeholder="UF" />
                 </CityAndFederativeUnitContainer>
               </AddressComplementContainer>
             </AddressInputsWrapper>
