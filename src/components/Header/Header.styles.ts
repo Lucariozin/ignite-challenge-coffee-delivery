@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.header`
@@ -42,7 +43,11 @@ export const Address = styled.span`
   }
 `
 
-export const CartButton = styled.button`
+export const CartAnchor = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 2.375rem;
   height: 2.375rem;
   border: none;

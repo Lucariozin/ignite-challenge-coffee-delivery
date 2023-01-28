@@ -1,7 +1,7 @@
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 
 import {
-  CartButton,
+  CartAnchor,
   CartContainer,
   CoffeeImage,
   CoffeeName,
@@ -54,9 +54,9 @@ export const CoffeeItem = () => {
             </IncrementItems>
           </ItemsAmountContainer>
 
-          <CartButton type="button" title="Ir para a tela de checkout">
+          <CartAnchor to="/checkout" title="Ir para a tela de checkout">
             <ShoppingCartSimple size={22} weight="fill" />
-          </CartButton>
+          </CartAnchor>
         </CartContainer>
       </PriceContainer>
     </Container>

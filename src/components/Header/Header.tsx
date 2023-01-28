@@ -1,6 +1,6 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
-import { Address, CartButton, CartContainer, Container, Logo, Wrapper } from './Header.styles'
+import { Address, CartAnchor, CartContainer, Container, Logo, Wrapper } from './Header.styles'
 
 export const Header = () => {
   return (
@@ -14,9 +14,9 @@ export const Header = () => {
             Porto Alegre, RS
           </Address>
 
-          <CartButton type="button" title="Ir para a tela de checkout">
+          <CartAnchor to="/checkout" title="Ir para a tela de checkout">
             <ShoppingCart size={22} weight="fill" />
-          </CartButton>
+          </CartAnchor>
         </CartContainer>
       </Wrapper>
     </Container>

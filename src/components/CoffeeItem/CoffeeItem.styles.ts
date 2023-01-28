@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const Container = styled.div`
   display: flex;
@@ -117,7 +118,11 @@ export const DecrementItems = styled(BaseButton)``
 
 export const IncrementItems = styled(BaseButton)``
 
-export const CartButton = styled.button`
+export const CartAnchor = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 2.375rem;
   height: 2.375rem;
   border: none;
