@@ -1,4 +1,6 @@
-import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
+import { ShoppingCartSimple } from 'phosphor-react'
+
+import { ItemQuantityControl } from '@components/ItemQuantityControl'
 
 import {
   CartAnchor,
@@ -6,11 +8,7 @@ import {
   CoffeeImage,
   CoffeeName,
   Container,
-  DecrementItems,
   Description,
-  IncrementItems,
-  ItemsAmount,
-  ItemsAmountContainer,
   LabelItem,
   LabelList,
   Price,
@@ -42,17 +40,7 @@ export const CoffeeItem = () => {
         </Price>
 
         <CartContainer>
-          <ItemsAmountContainer>
-            <DecrementItems type="button" title="Remover uma unidade do carrinho">
-              <Minus size={14} weight="fill" />
-            </DecrementItems>
-
-            <ItemsAmount>1</ItemsAmount>
-
-            <IncrementItems type="button" title="Adicionar uma unidade no carrinho">
-              <Plus size={14} weight="fill" />
-            </IncrementItems>
-          </ItemsAmountContainer>
+          <ItemQuantityControl quantity={1} setQuantity={() => {}} />
 
           <CartAnchor to="/checkout" title="Ir para a tela de checkout">
             <ShoppingCartSimple size={22} weight="fill" />
