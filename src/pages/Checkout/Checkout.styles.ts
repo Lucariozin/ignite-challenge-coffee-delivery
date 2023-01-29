@@ -16,4 +16,40 @@ export const OrderTitle = styled.h1`
   color: ${({ theme }) => theme.palette.gray[800]};
 `
 
-export const OrderInformationContainer = styled.main``
+export const RightColumn = styled.main``
+
+export const SelectedCoffeesTitle = styled.h2``
+
+export const ConfirmOrderContainer = styled.div``
+
+export const CartItemsList = styled.div``
+
+export const CartItem = styled.div``
+
+export const ItemImage = styled.img``
+
+export const ActionsContainer = styled.div``
+
+export const ItemName = styled.h4``
+
+export const Actions = styled.div``
+
+export const RemoveItemButton = styled.button``
+
+export const ItemPrice = styled.span``
+
+export const OrderSummaryContainer = styled.div``
+
+export const SummaryRow = styled.div``
+
+export const SummaryText = styled.span``
+
+export const SummaryPrice = styled.span``
+
+export const SummaryTotalContainer = styled.div``
+
+export const SummaryTotalText = styled.h3``
+
+export const SummaryTotalPrice = styled.span``
+
+export const ConfirmOrderButton = styled.button``
