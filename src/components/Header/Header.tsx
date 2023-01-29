@@ -1,12 +1,14 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
-import { Address, CartAnchor, CartContainer, Container, Logo, Wrapper } from './Header.styles'
+import { Address, CartAnchor, CartContainer, Container, Logo, LogoAnchor, Wrapper } from './Header.styles'
 
 export const Header = () => {
   return (
     <Container>
       <Wrapper>
-        <Logo src="/img/coffee-delivery-logo.svg" alt="" width={84.95} height={40} />
+        <LogoAnchor to="/">
+          <Logo src="/img/coffee-delivery-logo.svg" alt="" width={84.95} height={40} />
+        </LogoAnchor>
 
         <CartContainer>
           <Address>
