@@ -1,5 +1,7 @@
 import { Trash } from 'phosphor-react'
 
+import { ItemQuantityControl } from '@components/ItemQuantityControl'
+
 import { DeliveryInformation } from './components/DeliveryInformation'
 import { PaymentInformation } from './components/PaymentInformation'
 
@@ -45,32 +47,51 @@ export const Checkout = () => {
         <ConfirmOrderContainer>
           <CartItemsList>
             <CartItem>
-              <ItemImage />
+              <ItemImage
+                src="/img/coffees/traditional-espresso.svg"
+                alt="Café em uma linda xicara vista de cima"
+                width={64}
+                height={64}
+              />
 
               <ActionsContainer>
                 <ItemName>Expresso Tradicional</ItemName>
 
                 <Actions>
-                  {/* <ItemsAmountContainer>
-                    <DecrementItems type="button" title="Remover uma unidade do carrinho">
-                      <Minus size={14} weight="fill" />
-                    </DecrementItems>
-
-                    <ItemsAmount>1</ItemsAmount>
-
-                    <IncrementItems type="button" title="Adicionar uma unidade no carrinho">
-                      <Plus size={14} weight="fill" />
-                    </IncrementItems>
-                  </ItemsAmountContainer> */}
+                  <ItemQuantityControl quantity={1} setQuantity={() => {}} />
 
                   <RemoveItemButton>
-                    <Trash size={14} />
+                    <Trash size={18} />
                     REMOVER
                   </RemoveItemButton>
                 </Actions>
-
-                <ItemPrice>R$ 9,90</ItemPrice>
               </ActionsContainer>
+
+              <ItemPrice>R$ 9,90</ItemPrice>
+            </CartItem>
+
+            <CartItem>
+              <ItemImage
+                src="/img/coffees/traditional-espresso.svg"
+                alt="Café em uma linda xicara vista de cima"
+                width={64}
+                height={64}
+              />
+
+              <ActionsContainer>
+                <ItemName>Expresso Tradicional</ItemName>
+
+                <Actions>
+                  <ItemQuantityControl quantity={1} setQuantity={() => {}} />
+
+                  <RemoveItemButton>
+                    <Trash size={18} />
+                    REMOVER
+                  </RemoveItemButton>
+                </Actions>
+              </ActionsContainer>
+
+              <ItemPrice>R$ 9,90</ItemPrice>
             </CartItem>
           </CartItemsList>
 
