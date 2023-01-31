@@ -1,10 +1,16 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   margin-top: 5rem;
 `
 
-export const DeliverySummaryContainer = styled.div``
+export const DeliverySummaryContainer = styled.div`
+  width: 100%;
+  max-width: 32.875rem;
+`
 
 export const ConfirmedOrderTitle = styled.h1`
   font-size: 2rem;
@@ -75,4 +81,9 @@ export const RowText = styled.p`
 
 export const RowStrong = styled.strong`
   color: ${({ theme }) => theme.palette.gray[700]};
+`
+
+export const MotoboyImage = styled.img`
+  margin-bottom: -0.8rem;
+  user-select: none;
 `

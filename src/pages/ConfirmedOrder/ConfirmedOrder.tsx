@@ -10,6 +10,7 @@ import {
   DeliverySummaryRow,
   Icon,
   LinearGradientBorder,
+  MotoboyImage,
   RowStrong,
   RowText,
   RowTextContainer,
@@ -67,6 +68,8 @@ export const ConfirmedOrder = () => {
           </DeliverySummary>
         </LinearGradientBorder>
       </DeliverySummaryContainer>
+
+      <MotoboyImage src="/img/motoboy.svg" alt="" width={492} height={293} />
     </Container>
   )
 }
