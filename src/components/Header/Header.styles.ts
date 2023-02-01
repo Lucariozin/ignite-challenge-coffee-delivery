@@ -21,6 +21,16 @@ export const Wrapper = styled.div`
 
 export const LogoAnchor = styled(NavLink)`
   line-height: 0;
+  outline: 0;
+  outline-color: transparent;
+  border-radius: 1px;
+
+  transition: outline-color 0.2s;
+
+  &:focus-visible {
+    outline: 1px solid ${({ theme }) => theme.palette.yellow[400]};
+    outline-offset: 10px;
+  }
 `
 
 export const Logo = styled.img`
