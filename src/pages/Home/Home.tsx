@@ -3,6 +3,8 @@ import { CoffeeItem } from '@components/CoffeeItem'
 
 import { CoffeeListContainer, OurCoffeesTitle, CoffeeList } from './Home.styles'
 
+import { coffeeList } from './Home.mock'
+
 export const Home = () => {
   return (
     <>
@@ -12,11 +14,9 @@ export const Home = () => {
         <OurCoffeesTitle>Nossos cafés</OurCoffeesTitle>
 
         <CoffeeList>
-          <CoffeeItem />
-          <CoffeeItem />
-          <CoffeeItem />
-          <CoffeeItem />
-          <CoffeeItem />
+          {coffeeList.map(({ id, name, description, labels, price, image }) => (
+            <CoffeeItem key={id} name={name} description={description} labels={labels} price={price} image={image} />
+          ))}
         </CoffeeList>
       </CoffeeListContainer>
     </>

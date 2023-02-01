@@ -15,28 +15,32 @@ import {
   PriceContainer,
 } from './CoffeeItem.styles'
 
-export const CoffeeItem = () => {
+interface CoffeeItemProps {
+  name: string
+  description: string
+  labels: string[]
+  price: number
+  image: string
+}
+
+export const CoffeeItem = ({ name = '', description = '', labels = [], price = 0, image = '' }: CoffeeItemProps) => {
   return (
     <Container>
-      <CoffeeImage
-        src="/img/coffees/traditional-espresso.svg"
-        alt="Café em uma linda xicara vista de cima"
-        width={120}
-        height={120}
-      />
+      <CoffeeImage src={image} alt="Café em uma linda xicara vista de cima" width={120} height={120} />
 
       <LabelList>
-        <LabelItem>Tradicional</LabelItem>
-        <LabelItem>Tradicional</LabelItem>
+        {labels.map((label) => (
+          <LabelItem key={label}>{label}</LabelItem>
+        ))}
       </LabelList>
 
-      <CoffeeName>Expresso Tradicional</CoffeeName>
+      <CoffeeName>{name}</CoffeeName>
 
-      <Description>O tradicional café feito com água quente e grãos moídos</Description>
+      <Description>{description}</Description>
 
       <PriceContainer>
         <Price>
-          R$ <strong>9,90</strong>
+          R$ <strong>{price}</strong>
         </Price>
 
         <CartContainer>

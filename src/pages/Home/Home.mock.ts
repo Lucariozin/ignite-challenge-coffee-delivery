@@ -22,7 +22,7 @@ export const coffeeList: Coffee[] = [
     description: 'Café expresso tradicional com espuma cremosa',
     labels: ['Tradicional'],
     price: 9.9,
-    image: '/img/coffees/creamy-expresso.svg',
+    image: '/img/coffees/creamy-espresso.svg',
   },
   {
     id: '3',
