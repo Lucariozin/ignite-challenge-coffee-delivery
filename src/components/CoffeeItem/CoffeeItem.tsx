@@ -18,6 +18,7 @@ import {
 } from './CoffeeItem.styles'
 
 interface CoffeeItemProps {
+  id: string
   name: string
   description: string
   labels: string[]
@@ -25,10 +26,38 @@ interface CoffeeItemProps {
   image: string
 }
 
-export const CoffeeItem = ({ name = '', description = '', labels = [], price = 0, image = '' }: CoffeeItemProps) => {
-  const { addNewItemToTheCart } = useCart()
+export const CoffeeItem = ({
+  id = '',
+  name = '',
+  description = '',
+  labels = [],
+  price = 0,
+  image = '',
+}: CoffeeItemProps) => {
+  const { findItemById, addNewItemToTheCart, incrementItemQuantity } = useCart()
 
-  addNewItemToTheCart()
+  const item = findItemById(id)
+  const quantity = item?.quantity ?? 0
+
+  const handleSetQuantity = () => {
+    if (!quantity) {
+      const newItem = {
+        id,
+        name,
+        description,
+        labels,
+        price,
+        image,
+        quantity: 1,
+      }
+
+      addNewItemToTheCart(newItem)
+
+      return
+    }
+
+    incrementItemQuantity(id)
+  }
 
   return (
     <Container>
@@ -50,7 +79,7 @@ export const CoffeeItem = ({ name = '', description = '', labels = [], price = 0
         </Price>
 
         <CartContainer>
-          <ItemQuantityControl quantity={1} setQuantity={() => {}} />
+          <ItemQuantityControl quantity={quantity} setQuantity={handleSetQuantity} />
 
           <CartAnchor to="/checkout" title="Ir para a tela de checkout">
             <ShoppingCartSimple size={22} weight="fill" />

@@ -15,7 +15,15 @@ export const Home = () => {
 
         <CoffeeList>
           {coffeeList.map(({ id, name, description, labels, price, image }) => (
-            <CoffeeItem key={id} name={name} description={description} labels={labels} price={price} image={image} />
+            <CoffeeItem
+              key={id}
+              id={id}
+              name={name}
+              description={description}
+              labels={labels}
+              price={price}
+              image={image}
+            />
           ))}
         </CoffeeList>
       </CoffeeListContainer>
