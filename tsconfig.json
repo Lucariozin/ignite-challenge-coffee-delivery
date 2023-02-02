@@ -21,6 +21,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@pages/*": ["./src/pages/*"],
       "@styles/*": ["./src/styles/*"],
+      "@contexts/*": ["./src/contexts/*"],
     }
   },
   "include": ["src"],

@@ -1,5 +1,7 @@
 import { ShoppingCartSimple } from 'phosphor-react'
 
+import { useCart } from '@contexts/Cart'
+
 import { ItemQuantityControl } from '@components/ItemQuantityControl'
 
 import {
@@ -24,6 +26,10 @@ interface CoffeeItemProps {
 }
 
 export const CoffeeItem = ({ name = '', description = '', labels = [], price = 0, image = '' }: CoffeeItemProps) => {
+  const { addNewItemToTheCart } = useCart()
+
+  addNewItemToTheCart()
+
   return (
     <Container>
       <CoffeeImage src={image} alt="Café em uma linda xicara vista de cima" width={120} height={120} />

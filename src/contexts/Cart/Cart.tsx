@@ -1,36 +1,37 @@
-import { createContext, ReactNode, useContext, useReducer } from 'react'
+import { createContext, useContext, useReducer } from 'react'
 
-type Item = {
-  id: string
-  name: string
-  description: string
-  labels: string[]
-  price: number
-  image: string
-}
+import { reducer } from './Cart.reducer'
 
-interface CartContextState {
-  items: Item[]
-}
+import type { CartContextState, CartProviderProps } from './Cart.types'
 
 const initialState: CartContextState = {
   items: [],
+  dispatch: () => {},
 }
 
 const CartContext = createContext<CartContextState>(initialState)
 
-const reducer = (state: CartContextState, action: any) => {
-  return state
-}
-
-interface CartProviderProps {
-  children: ReactNode
-}
-
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  return <CartContext.Provider value={state}>{children}</CartContext.Provider>
+  const value: CartContextState = {
+    ...state,
+    dispatch,
+  }
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 
-export const useCart = () => useContext(CartContext)
+interface UseCartState extends CartContextState {
+  addNewItemToTheCart: () => void
+}
+
+export const useCart = (): UseCartState => {
+  const state = useContext(CartContext)
+
+  const addNewItemToTheCart = () => {
+    console.log('Adicionando novo item no carrinho')
+  }
+
+  return { ...state, addNewItemToTheCart }
+}
