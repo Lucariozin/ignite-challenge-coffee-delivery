@@ -1,8 +1,8 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useCallback, useContext, useReducer } from 'react'
 
 import { reducer } from './Cart.reducer'
 
-import type { CartContextState, CartProviderProps } from './Cart.types'
+import type { CartContextState, CartProviderProps, Item } from './Cart.types'
 
 const initialState: CartContextState = {
   items: [],
@@ -22,16 +22,37 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 
-interface UseCartState extends CartContextState {
-  addNewItemToTheCart: () => void
+interface UseCartState extends Omit<CartContextState, 'dispatch'> {
+  findItemById: (id: string) => Item | undefined
+  addNewItemToTheCart: (item: Item) => void
+  incrementItemQuantity: (id: string) => void
 }
 
 export const useCart = (): UseCartState => {
-  const state = useContext(CartContext)
+  const { dispatch, items, ...state } = useContext(CartContext)
 
-  const addNewItemToTheCart = () => {
-    console.log('Adicionando novo item no carrinho')
-  }
+  const findItemById = useCallback(
+    (id: string) => {
+      const item = items.find((item) => item.id === id)
 
-  return { ...state, addNewItemToTheCart }
+      return item
+    },
+    [items],
+  )
+
+  const addNewItemToTheCart = useCallback(
+    (item: Item) => {
+      dispatch({ type: 'ADD_NEW_ITEM_TO_THE_CART', payload: { item: { ...item, quantity: 1 } } })
+    },
+    [dispatch],
+  )
+
+  const incrementItemQuantity = useCallback(
+    (id: string) => {
+      dispatch({ type: 'INCREMENT_ITEM_QUANTITY', payload: { itemId: id } })
+    },
+    [dispatch],
+  )
+
+  return { ...state, items, findItemById, addNewItemToTheCart, incrementItemQuantity }
 }

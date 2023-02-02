@@ -8,6 +8,7 @@ export type Item = {
   labels: string[]
   price: number
   image: string
+  quantity: number
 }
 
 export interface CartContextState {
