@@ -39,11 +39,13 @@ export const RemoveItemButton = styled.button`
   color: ${({ theme }) => theme.palette.gray[700]};
 
   border: 0;
+  outline: 0;
   border-radius: 6px;
+  outline-color: transparent;
   background-color: ${({ theme }) => theme.palette.gray[400]};
 
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, outline-color 0.2s;
 
   & svg {
     color: ${({ theme }) => theme.palette.purple[300]};
@@ -51,6 +53,11 @@ export const RemoveItemButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.palette.gray[500]};
+  }
+
+  &:focus-visible {
+    outline: 1px solid ${({ theme }) => theme.palette.yellow[500]};
+    outline-offset: 2px;
   }
 `
 

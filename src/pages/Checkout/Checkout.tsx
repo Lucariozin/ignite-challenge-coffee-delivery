@@ -34,6 +34,19 @@ export const Checkout = () => {
     if (!items.length) navigate('/')
   }, [items.length, navigate])
 
+  const totalItemsPrice = items.reduce((acc, item) => {
+    const price = item.price * item.quantity
+
+    return acc + price
+  }, 0)
+
+  const deliveryFee = 3.5
+  const totalPrice = totalItemsPrice + deliveryFee
+
+  const formattedTotalItemsPrice = totalItemsPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+  const formattedDeliveryFee = deliveryFee.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+  const formattedTotalPrice = totalPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+
   return (
     <Container>
       <LeftColumn>
@@ -57,17 +70,17 @@ export const Checkout = () => {
           <OrderSummaryContainer>
             <SummaryRow>
               <SummaryText>Total de itens</SummaryText>
-              <SummaryPrice>R$ 29,70</SummaryPrice>
+              <SummaryPrice>{formattedTotalItemsPrice}</SummaryPrice>
             </SummaryRow>
 
             <SummaryRow>
               <SummaryText>Entrega</SummaryText>
-              <SummaryPrice>R$ 3,50</SummaryPrice>
+              <SummaryPrice>{formattedDeliveryFee}</SummaryPrice>
             </SummaryRow>
 
             <SummaryTotalContainer>
               <SummaryTotalText>Total</SummaryTotalText>
-              <SummaryTotalPrice>R$ 33,20</SummaryTotalPrice>
+              <SummaryTotalPrice>{formattedTotalPrice}</SummaryTotalPrice>
             </SummaryTotalContainer>
           </OrderSummaryContainer>
 
