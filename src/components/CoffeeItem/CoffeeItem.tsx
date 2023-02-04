@@ -65,6 +65,8 @@ export const CoffeeItem = ({
     decrementItemQuantity(id)
   }
 
+  const formattedPrice = price.toLocaleString('pr-br', { style: 'currency', currency: 'BRL' }).replace('R$', '')
+
   return (
     <Container>
       <CoffeeImage src={image} alt="Café em uma linda xicara vista de cima" width={120} height={120} />
@@ -81,7 +83,7 @@ export const CoffeeItem = ({
 
       <PriceContainer>
         <Price>
-          R$ <strong>{price}</strong>
+          R$<strong>{formattedPrice}</strong>
         </Price>
 
         <CartContainer>
