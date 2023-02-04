@@ -93,7 +93,7 @@ export const CoffeeItem = ({
             decrementQuantity={handleDecrementQuantity}
           />
 
-          <CartAnchor to="/checkout" title="Ir para a tela de checkout">
+          <CartAnchor to="/checkout" title="Ir para a tela de checkout" onClick={handleIncrementQuantity}>
             <ShoppingCartSimple size={22} weight="fill" />
           </CartAnchor>
         </CartContainer>

@@ -85,3 +85,12 @@ export const CartAnchor = styled(NavLink)`
     outline-offset: 2px;
   }
 `
+
+export const DisabledCartAnchor = styled(CartAnchor)`
+  filter: brightness(0.9);
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.yellow[100]};
+  }
+`
