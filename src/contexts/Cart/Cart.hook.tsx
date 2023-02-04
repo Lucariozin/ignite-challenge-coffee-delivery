@@ -1,28 +1,8 @@
-import { createContext, useCallback, useContext, useReducer } from 'react'
+import { useCallback, useContext } from 'react'
 
-import { reducer } from './Cart.reducer'
+import { CartContext } from './Cart.context'
 
-import type { CartContextState, CartProviderProps, Item } from './Cart.types'
-
-const initialState: CartContextState = {
-  items: [],
-  dispatch: () => {},
-}
-
-const CartContext = createContext<CartContextState>(initialState)
-
-export const CartProvider = ({ children }: CartProviderProps) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
-
-  console.log(state.items)
-
-  const value: CartContextState = {
-    ...state,
-    dispatch,
-  }
-
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
-}
+import type { CartContextState, Item } from './Cart.types'
 
 interface UseCartState extends Omit<CartContextState, 'dispatch'> {
   findItemById: (id: string) => Item | undefined

@@ -1,1 +1,4 @@
-export { CartProvider, useCart } from './Cart'
+import { CartProvider } from './Cart.context'
+import { useCart } from './Cart.hook'
+
+export { CartProvider, useCart }
