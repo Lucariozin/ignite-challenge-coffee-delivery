@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+
 import { Trash } from 'phosphor-react'
+
+import { useCart } from '@contexts/Cart'
 
 import { ItemQuantityControl } from '@components/ItemQuantityControl'
 
@@ -29,8 +33,17 @@ import {
   SummaryTotalPrice,
   SummaryTotalText,
 } from './Checkout.styles'
+import { useEffect } from 'react'
 
 export const Checkout = () => {
+  const { items } = useCart()
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!items.length) navigate('/')
+  }, [items.length, navigate])
+
   return (
     <Container>
       <LeftColumn>
