@@ -65,6 +65,12 @@ export const CoffeeItem = ({
     decrementItemQuantity(id)
   }
 
+  const handleCartAnchorClick = () => {
+    if (quantity) return
+
+    handleIncrementQuantity()
+  }
+
   const formattedPrice = price.toLocaleString('pr-br', { style: 'currency', currency: 'BRL' }).replace('R$', '')
 
   return (
@@ -93,7 +99,7 @@ export const CoffeeItem = ({
             decrementQuantity={handleDecrementQuantity}
           />
 
-          <CartAnchor to="/checkout" title="Ir para a tela de checkout" onClick={handleIncrementQuantity}>
+          <CartAnchor to="/checkout" title="Ir para a tela de checkout" onClick={handleCartAnchorClick}>
             <ShoppingCartSimple size={22} weight="fill" />
           </CartAnchor>
         </CartContainer>

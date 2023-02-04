@@ -1,9 +1,11 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useCart } from '@contexts/Cart'
 
 import { DeliveryInformation } from './components/DeliveryInformation'
 import { PaymentInformation } from './components/PaymentInformation'
+import { CartItem } from '@components/CartItem'
 
 import {
   CartItemsList,
@@ -22,8 +24,6 @@ import {
   SummaryTotalPrice,
   SummaryTotalText,
 } from './Checkout.styles'
-import { useEffect } from 'react'
-import { CartItem } from '@components/CartItem'
 
 export const Checkout = () => {
   const { items } = useCart()

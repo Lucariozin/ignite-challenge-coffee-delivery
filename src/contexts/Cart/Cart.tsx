@@ -27,6 +27,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 interface UseCartState extends Omit<CartContextState, 'dispatch'> {
   findItemById: (id: string) => Item | undefined
   addNewItemToTheCart: (item: Item) => void
+  removeItemFromTheCart: (id: string) => void
   incrementItemQuantity: (id: string) => void
   decrementItemQuantity: (id: string) => void
 }
@@ -50,6 +51,13 @@ export const useCart = (): UseCartState => {
     [dispatch],
   )
 
+  const removeItemFromTheCart = useCallback(
+    (id: string) => {
+      dispatch({ type: 'REMOVE_ITEM_FROM_THE_CART', payload: { itemId: id } })
+    },
+    [dispatch],
+  )
+
   const incrementItemQuantity = useCallback(
     (id: string) => {
       dispatch({ type: 'INCREMENT_ITEM_QUANTITY', payload: { itemId: id } })
@@ -64,5 +72,13 @@ export const useCart = (): UseCartState => {
     [dispatch],
   )
 
-  return { ...state, items, findItemById, addNewItemToTheCart, incrementItemQuantity, decrementItemQuantity }
+  return {
+    ...state,
+    items,
+    findItemById,
+    addNewItemToTheCart,
+    removeItemFromTheCart,
+    incrementItemQuantity,
+    decrementItemQuantity,
+  }
 }

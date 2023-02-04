@@ -1,5 +1,7 @@
 import { Trash } from 'phosphor-react'
 
+import { useCart } from '@contexts/Cart'
+
 import { ItemQuantityControl } from '@components/ItemQuantityControl'
 
 import {
@@ -11,7 +13,6 @@ import {
   ItemPrice,
   RemoveItemButton,
 } from './CartItem.styles'
-import { useCart } from '@contexts/Cart'
 
 interface CartItemProps {
   id: string
@@ -22,7 +23,7 @@ interface CartItemProps {
 }
 
 export const CartItem = ({ id = '', image = '', name = '', price = 0, quantity = 0 }: CartItemProps) => {
-  const { incrementItemQuantity, decrementItemQuantity } = useCart()
+  const { incrementItemQuantity, decrementItemQuantity, removeItemFromTheCart } = useCart()
 
   const handleIncrementQuantity = () => incrementItemQuantity(id)
 
@@ -31,6 +32,8 @@ export const CartItem = ({ id = '', image = '', name = '', price = 0, quantity =
 
     decrementItemQuantity(id)
   }
+
+  const handleRemoveItemFromTheCart = () => removeItemFromTheCart(id)
 
   const formattedPrice = price.toLocaleString('pr-br', { style: 'currency', currency: 'BRL' })
 
@@ -48,7 +51,7 @@ export const CartItem = ({ id = '', image = '', name = '', price = 0, quantity =
             decrementQuantity={handleDecrementQuantity}
           />
 
-          <RemoveItemButton>
+          <RemoveItemButton type="button" onClick={handleRemoveItemFromTheCart}>
             <Trash size={18} />
             REMOVER
           </RemoveItemButton>
