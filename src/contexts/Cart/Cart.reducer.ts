@@ -1,6 +1,6 @@
 import { CartContextState, Item } from './Cart.types'
 
-type Action = 'ADD_NEW_ITEM_TO_THE_CART' | 'INCREMENT_ITEM_QUANTITY'
+type Action = 'ADD_NEW_ITEM_TO_THE_CART' | 'INCREMENT_ITEM_QUANTITY' | 'DECREMENT_ITEM_QUANTITY'
 
 type Payload = {
   item?: Item
@@ -30,6 +30,23 @@ const actionFunctionsObj: ActionFunctionObj = {
     const { itemId } = payload
 
     const newItems = state.items.map((item) => (item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item))
+
+    return { ...state, items: newItems }
+  },
+  DECREMENT_ITEM_QUANTITY: ({ state, payload }) => {
+    if (!payload?.itemId) return state
+
+    const { itemId } = payload
+
+    const newItems = state.items
+      .map((item) => {
+        if (item.id === itemId) {
+          return { ...item, quantity: item.quantity ? item.quantity - 1 : 0 }
+        }
+
+        return item
+      })
+      .filter((item) => item.quantity !== 0)
 
     return { ...state, items: newItems }
   },

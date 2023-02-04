@@ -4,22 +4,24 @@ import { Container, DecrementItems, IncrementItems, ItemsAmount } from './ItemQu
 
 interface ItemQuantityControlProps {
   quantity: number
-  setQuantity: (newQuantity: number) => void
+  incrementQuantity: () => void
+  decrementQuantity: () => void
 }
 
-export const ItemQuantityControl = ({ quantity = 0, setQuantity = () => {} }: ItemQuantityControlProps) => {
-  const handleDecrementQuantity = () => setQuantity(quantity - 1)
-  const handleIncrementQuantity = () => setQuantity(quantity + 1)
-
+export const ItemQuantityControl = ({
+  quantity = 0,
+  incrementQuantity = () => {},
+  decrementQuantity = () => {},
+}: ItemQuantityControlProps) => {
   return (
     <Container>
-      <DecrementItems type="button" title="Remover uma unidade do carrinho" onClick={handleDecrementQuantity}>
+      <DecrementItems type="button" title="Remover uma unidade do carrinho" onClick={decrementQuantity}>
         <Minus size={14} weight="fill" />
       </DecrementItems>
 
       <ItemsAmount>{quantity}</ItemsAmount>
 
-      <IncrementItems type="button" title="Adicionar uma unidade no carrinho" onClick={handleIncrementQuantity}>
+      <IncrementItems type="button" title="Adicionar uma unidade no carrinho" onClick={incrementQuantity}>
         <Plus size={14} weight="fill" />
       </IncrementItems>
     </Container>

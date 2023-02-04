@@ -34,12 +34,12 @@ export const CoffeeItem = ({
   price = 0,
   image = '',
 }: CoffeeItemProps) => {
-  const { findItemById, addNewItemToTheCart, incrementItemQuantity } = useCart()
+  const { findItemById, addNewItemToTheCart, incrementItemQuantity, decrementItemQuantity } = useCart()
 
   const item = findItemById(id)
   const quantity = item?.quantity ?? 0
 
-  const handleSetQuantity = () => {
+  const handleIncrementQuantity = () => {
     if (!quantity) {
       const newItem = {
         id,
@@ -57,6 +57,12 @@ export const CoffeeItem = ({
     }
 
     incrementItemQuantity(id)
+  }
+
+  const handleDecrementQuantity = () => {
+    if (!quantity) return
+
+    decrementItemQuantity(id)
   }
 
   return (
@@ -79,7 +85,11 @@ export const CoffeeItem = ({
         </Price>
 
         <CartContainer>
-          <ItemQuantityControl quantity={quantity} setQuantity={handleSetQuantity} />
+          <ItemQuantityControl
+            quantity={quantity}
+            incrementQuantity={handleIncrementQuantity}
+            decrementQuantity={handleDecrementQuantity}
+          />
 
           <CartAnchor to="/checkout" title="Ir para a tela de checkout">
             <ShoppingCartSimple size={22} weight="fill" />

@@ -26,6 +26,7 @@ interface UseCartState extends Omit<CartContextState, 'dispatch'> {
   findItemById: (id: string) => Item | undefined
   addNewItemToTheCart: (item: Item) => void
   incrementItemQuantity: (id: string) => void
+  decrementItemQuantity: (id: string) => void
 }
 
 export const useCart = (): UseCartState => {
@@ -54,5 +55,12 @@ export const useCart = (): UseCartState => {
     [dispatch],
   )
 
-  return { ...state, items, findItemById, addNewItemToTheCart, incrementItemQuantity }
+  const decrementItemQuantity = useCallback(
+    (id: string) => {
+      dispatch({ type: 'DECREMENT_ITEM_QUANTITY', payload: { itemId: id } })
+    },
+    [dispatch],
+  )
+
+  return { ...state, items, findItemById, addNewItemToTheCart, incrementItemQuantity, decrementItemQuantity }
 }
