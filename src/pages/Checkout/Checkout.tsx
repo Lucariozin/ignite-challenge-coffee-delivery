@@ -1,29 +1,18 @@
 import { useNavigate } from 'react-router-dom'
 
-import { Trash } from 'phosphor-react'
-
 import { useCart } from '@contexts/Cart'
-
-import { ItemQuantityControl } from '@components/ItemQuantityControl'
 
 import { DeliveryInformation } from './components/DeliveryInformation'
 import { PaymentInformation } from './components/PaymentInformation'
 
 import {
-  Actions,
-  ActionsContainer,
-  CartItem,
   CartItemsList,
   ConfirmOrderButton,
   ConfirmOrderContainer,
   Container,
-  ItemImage,
-  ItemName,
-  ItemPrice,
   LeftColumn,
   OrderSummaryContainer,
   OrderTitle,
-  RemoveItemButton,
   RightColumn,
   SelectedCoffeesTitle,
   SummaryPrice,
@@ -34,6 +23,7 @@ import {
   SummaryTotalText,
 } from './Checkout.styles'
 import { useEffect } from 'react'
+import { CartItem } from '@components/CartItem'
 
 export const Checkout = () => {
   const { items } = useCart()
@@ -59,53 +49,9 @@ export const Checkout = () => {
 
         <ConfirmOrderContainer>
           <CartItemsList>
-            <CartItem>
-              <ItemImage
-                src="/img/coffees/traditional-espresso.svg"
-                alt="Café em uma linda xicara vista de cima"
-                width={64}
-                height={64}
-              />
-
-              <ActionsContainer>
-                <ItemName>Expresso Tradicional</ItemName>
-
-                <Actions>
-                  <ItemQuantityControl quantity={1} setQuantity={() => {}} />
-
-                  <RemoveItemButton>
-                    <Trash size={18} />
-                    REMOVER
-                  </RemoveItemButton>
-                </Actions>
-              </ActionsContainer>
-
-              <ItemPrice>R$ 9,90</ItemPrice>
-            </CartItem>
-
-            <CartItem>
-              <ItemImage
-                src="/img/coffees/traditional-espresso.svg"
-                alt="Café em uma linda xicara vista de cima"
-                width={64}
-                height={64}
-              />
-
-              <ActionsContainer>
-                <ItemName>Expresso Tradicional</ItemName>
-
-                <Actions>
-                  <ItemQuantityControl quantity={1} setQuantity={() => {}} />
-
-                  <RemoveItemButton>
-                    <Trash size={18} />
-                    REMOVER
-                  </RemoveItemButton>
-                </Actions>
-              </ActionsContainer>
-
-              <ItemPrice>R$ 9,90</ItemPrice>
-            </CartItem>
+            {items.map(({ id, name, image, price, quantity }) => (
+              <CartItem key={id} id={id} name={name} image={image} price={price} quantity={quantity} />
+            ))}
           </CartItemsList>
 
           <OrderSummaryContainer>
