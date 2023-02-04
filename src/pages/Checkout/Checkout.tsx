@@ -84,7 +84,9 @@ export const Checkout = () => {
             </SummaryTotalContainer>
           </OrderSummaryContainer>
 
-          <ConfirmOrderButton>CONFIRMAR PEDIDO</ConfirmOrderButton>
+          <ConfirmOrderButton type="submit" form="address-form">
+            CONFIRMAR PEDIDO
+          </ConfirmOrderButton>
         </ConfirmOrderContainer>
       </RightColumn>
     </Container>

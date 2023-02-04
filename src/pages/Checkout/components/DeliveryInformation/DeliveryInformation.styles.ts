@@ -37,33 +37,8 @@ export const AddressForm = styled.form`
   flex-direction: column;
   gap: 1rem;
 
-  & > input:first-child {
+  & > div:first-child {
     max-width: 12.5rem;
-  }
-`
-
-export const Input = styled.input`
-  width: 100%;
-  height: 2.625rem;
-  padding: 0 0.75rem;
-
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.palette.gray[700]};
-
-  outline: 0;
-  outline-color: transparent;
-  border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.palette.gray[400]};
-  background-color: ${({ theme }) => theme.palette.gray[300]};
-
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: ${({ theme }) => theme.palette.gray[600]};
-  }
-
-  &:focus-visible {
-    border-color: ${({ theme }) => theme.palette.yellow[500]};
   }
 `
 
@@ -91,7 +66,7 @@ export const CityAndFederativeUnitContainer = styled.div`
   display: flex;
   gap: 0.875rem;
 
-  & input:nth-child(2) {
+  & div:nth-child(2) {
     max-width: 3.75rem;
   }
 `

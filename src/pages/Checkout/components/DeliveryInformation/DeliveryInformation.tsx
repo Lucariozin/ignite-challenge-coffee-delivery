@@ -1,5 +1,12 @@
 import { MapPinLine } from 'phosphor-react'
 
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import * as zod from 'zod'
+
+import { Input } from '@components/Input'
+
 import {
   AddressComplementContainer,
   AddressContainer,
@@ -11,10 +18,29 @@ import {
   DeliveryAddressText,
   DeliveryAddressTitle,
   HouseNumberAndDistrictContainer,
-  Input,
 } from './DeliveryInformation.styles'
 
+const zodSchema = zod.object({
+  cep: zod.string(),
+  street: zod.string(),
+  houseNumber: zod.string().transform((houseNumber) => Number(houseNumber)),
+  neighborhood: zod.string(),
+  addressComplement: zod.string(),
+  city: zod.string(),
+  fu: zod.string(),
+})
+
+type AddressFormInputs = zod.infer<typeof zodSchema>
+
 export const DeliveryInformation = () => {
+  const { register, handleSubmit } = useForm<AddressFormInputs>({
+    resolver: zodResolver(zodSchema),
+  })
+
+  const handleAddressFormSubmit = (data: AddressFormInputs) => {
+    console.log(data)
+  }
+
   return (
     <Container>
       <AddressContainer>
@@ -26,22 +52,22 @@ export const DeliveryInformation = () => {
         </AddressTextContainer>
       </AddressContainer>
 
-      <AddressForm>
-        <Input placeholder="CEP" />
-        <Input placeholder="Rua" />
+      <AddressForm id="address-form" onSubmit={handleSubmit(handleAddressFormSubmit)}>
+        <Input labelText="cep" placeholder="CEP" {...register('cep')} />
+        <Input labelText="rua" placeholder="Rua" {...register('street')} />
 
         <AddressInputsWrapper>
           <HouseNumberAndDistrictContainer>
-            <Input placeholder="Número" />
-            <Input placeholder="Bairro" />
+            <Input labelText="número" placeholder="Número" {...register('houseNumber')} />
+            <Input labelText="bairro" placeholder="Bairro" {...register('neighborhood')} />
           </HouseNumberAndDistrictContainer>
 
           <AddressComplementContainer>
-            <Input placeholder="Complemento" />
+            <Input labelText="complemento" placeholder="Complemento" {...register('addressComplement')} />
 
             <CityAndFederativeUnitContainer>
-              <Input placeholder="Cidade" />
-              <Input placeholder="UF" />
+              <Input labelText="cidade" placeholder="Cidade" {...register('city')} />
+              <Input labelText="uf" placeholder="UF" {...register('fu')} />
             </CityAndFederativeUnitContainer>
           </AddressComplementContainer>
         </AddressInputsWrapper>
