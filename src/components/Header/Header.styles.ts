@@ -58,7 +58,11 @@ export const Address = styled.span`
   }
 `
 
-export const CartAnchor = styled(NavLink)`
+interface CartAnchorProps {
+  $itemsQuantity: number
+}
+
+export const CartAnchor = styled(NavLink)<CartAnchorProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,5 +87,32 @@ export const CartAnchor = styled(NavLink)`
     background-color: ${({ theme }) => theme.palette.yellow[200]};
     outline: 1px solid ${({ theme }) => theme.palette.yellow[500]};
     outline-offset: 2px;
+  }
+
+  &::after {
+    content: '${({ $itemsQuantity }) => $itemsQuantity}';
+
+    position: absolute;
+    opacity: ${({ $itemsQuantity }) => ($itemsQuantity ? '1' : '0')};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 1.25rem;
+    min-width: 1.25rem;
+    margin: -2.25rem -2.25rem 0 0;
+    padding: 0 4px;
+    flex-shrink: 0;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    border-radius: 20px;
+    user-select: none;
+    box-sizing: border-box;
+
+    color: ${({ theme }) => theme.palette.white};
+    background-color: ${({ theme }) => theme.palette.yellow[500]};
   }
 `
