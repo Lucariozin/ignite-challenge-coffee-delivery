@@ -1,6 +1,8 @@
+import { UseFormRegister } from 'react-hook-form'
+
 import { MapPinLine } from 'phosphor-react'
 
-import { AddressForm } from '@components/AddressForm'
+import { AddressForm, AddressFormInputs } from '@components/AddressForm'
 
 import {
   AddressContainer,
@@ -10,7 +12,12 @@ import {
   DeliveryAddressTitle,
 } from './DeliveryInformation.styles'
 
-export const DeliveryInformation = () => {
+interface DeliveryInformationProps {
+  register: UseFormRegister<AddressFormInputs>
+  handleSubmit: () => void
+}
+
+export const DeliveryInformation = ({ register, handleSubmit }: DeliveryInformationProps) => {
   return (
     <Container>
       <AddressContainer>
@@ -22,7 +29,7 @@ export const DeliveryInformation = () => {
         </AddressTextContainer>
       </AddressContainer>
 
-      <AddressForm />
+      <AddressForm register={register} handleSubmit={handleSubmit} />
     </Container>
   )
 }

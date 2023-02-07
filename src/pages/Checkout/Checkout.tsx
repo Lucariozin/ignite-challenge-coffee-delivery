@@ -1,8 +1,13 @@
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import { useCart } from '@contexts/Cart'
 
 import { DeliveryInformation } from './components/DeliveryInformation'
 import { PaymentInformation } from './components/PaymentInformation'
 import { CartItem } from '@components/CartItem'
+
+import { AddressFormInputs, zodSchema } from '@components/AddressForm'
 
 import {
   CartItemsList,
@@ -23,13 +28,17 @@ import {
 } from './Checkout.styles'
 
 export const Checkout = () => {
+  const { register, handleSubmit } = useForm<AddressFormInputs>({
+    resolver: zodResolver(zodSchema),
+  })
+
   const { items } = useCart()
 
-  const totalItemsPrice = items.reduce((acc, item) => {
-    const price = item.price * item.quantity
+  const handleAddressFormSubmit = handleSubmit((data: AddressFormInputs) => {
+    console.log(data)
+  })
 
-    return acc + price
-  }, 0)
+  const totalItemsPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
   const deliveryFee = 3.5
   const totalPrice = totalItemsPrice + deliveryFee
@@ -45,7 +54,7 @@ export const Checkout = () => {
       <LeftColumn>
         <OrderTitle>Complete seu pedido</OrderTitle>
 
-        <DeliveryInformation />
+        <DeliveryInformation register={register} handleSubmit={handleAddressFormSubmit} />
 
         <PaymentInformation />
       </LeftColumn>

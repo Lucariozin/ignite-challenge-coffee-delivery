@@ -1,7 +1,6 @@
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { UseFormRegister } from 'react-hook-form'
 
-import * as zod from 'zod'
+import { AddressFormInputs } from './zodSchema'
 
 import { Input } from '@components/Input'
 
@@ -13,55 +12,14 @@ import {
   HouseNumberAndDistrictContainer,
 } from './AddressForm.styles'
 
-const zodSchema = zod.object({
-  cep: zod.string().min(1).max(255),
-  street: zod
-    .string()
-    .min(1)
-    .max(255)
-    .refine((city) => isNaN(Number(city))),
-  houseNumber: zod
-    .string()
-    .min(1)
-    .max(255)
-    .transform((houseNumber) => Number(houseNumber))
-    .refine((houseNumber) => !isNaN(houseNumber)),
-  neighborhood: zod
-    .string()
-    .min(1)
-    .max(255)
-    .refine((city) => isNaN(Number(city))),
-  addressComplement: zod
-    .string()
-    .min(1)
-    .max(255)
-    .refine((city) => isNaN(Number(city))),
-  city: zod
-    .string()
-    .min(1)
-    .max(255)
-    .refine((city) => isNaN(Number(city))),
-  fu: zod
-    .string()
-    .min(2)
-    .max(2)
-    .refine((fu) => isNaN(Number(fu)))
-    .transform((fu) => fu.toLocaleUpperCase()),
-})
+interface AddressFormProps {
+  register: UseFormRegister<AddressFormInputs>
+  handleSubmit: () => void
+}
 
-type AddressFormInputs = zod.infer<typeof zodSchema>
-
-export const AddressForm = () => {
-  const { register, handleSubmit } = useForm<AddressFormInputs>({
-    resolver: zodResolver(zodSchema),
-  })
-
-  const handleAddressFormSubmit = (data: AddressFormInputs) => {
-    console.log(data)
-  }
-
+export const AddressForm = ({ register, handleSubmit = () => {} }: AddressFormProps) => {
   return (
-    <Container id="address-form" onSubmit={handleSubmit(handleAddressFormSubmit)}>
+    <Container id="address-form" onSubmit={handleSubmit}>
       <Input labelText="cep" placeholder="CEP" {...register('cep')} />
       <Input labelText="rua" placeholder="Rua" {...register('street')} />
 
