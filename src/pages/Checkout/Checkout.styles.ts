@@ -109,7 +109,7 @@ export const ConfirmOrderButton = styled.button`
   user-select: none;
   transition: background-color 0.2s, outline-color 0.2s;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: ${({ theme }) => theme.palette.yellow[500]};
   }
 
@@ -117,5 +117,10 @@ export const ConfirmOrderButton = styled.button`
     background-color: ${({ theme }) => theme.palette.yellow[500]};
     outline: 1px solid ${({ theme }) => theme.palette.yellow[400]};
     outline-offset: 2px;
+  }
+
+  &:disabled {
+    filter: brightness(0.9);
+    cursor: not-allowed;
   }
 `

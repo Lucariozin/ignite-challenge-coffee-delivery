@@ -1,6 +1,3 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { useCart } from '@contexts/Cart'
 
 import { DeliveryInformation } from './components/DeliveryInformation'
@@ -28,12 +25,6 @@ import {
 export const Checkout = () => {
   const { items } = useCart()
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!items.length) navigate('/')
-  }, [items.length, navigate])
-
   const totalItemsPrice = items.reduce((acc, item) => {
     const price = item.price * item.quantity
 
@@ -46,6 +37,8 @@ export const Checkout = () => {
   const formattedTotalItemsPrice = totalItemsPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
   const formattedDeliveryFee = deliveryFee.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
   const formattedTotalPrice = totalPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+
+  const cartIsEmpty = !items.length
 
   return (
     <Container>
@@ -84,7 +77,7 @@ export const Checkout = () => {
             </SummaryTotalContainer>
           </OrderSummaryContainer>
 
-          <ConfirmOrderButton type="submit" form="address-form">
+          <ConfirmOrderButton type="submit" form="address-form" disabled={cartIsEmpty}>
             CONFIRMAR PEDIDO
           </ConfirmOrderButton>
         </ConfirmOrderContainer>
