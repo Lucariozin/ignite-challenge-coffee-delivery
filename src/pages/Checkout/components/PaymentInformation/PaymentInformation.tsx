@@ -1,4 +1,7 @@
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
+
+import type { AddressFormInputs } from '@components/AddressForm'
 
 import {
   Container,
@@ -10,7 +13,14 @@ import {
   PaymentTextTitle,
 } from './PaymentInformation.styles'
 
-export const PaymentInformation = () => {
+interface PaymentInformationProps {
+  register: UseFormRegister<AddressFormInputs>
+  setValue: UseFormSetValue<AddressFormInputs>
+}
+
+export const PaymentInformation = ({ register, setValue }: PaymentInformationProps) => {
+  const onPaymentMethodChange = (value: 'credit-card' | 'debit-card' | 'cash' | '') => setValue('paymentMethod', value)
+
   return (
     <Container>
       <PaymentContainer>
@@ -22,7 +32,7 @@ export const PaymentInformation = () => {
         </PaymentTextContainer>
       </PaymentContainer>
 
-      <PaymentMethodContainer type="single" onValueChange={(value) => console.log('Olha o velho', value)}>
+      <PaymentMethodContainer type="single" onValueChange={onPaymentMethodChange} {...register('paymentMethod')}>
         <PaymentMethodItem value="credit-card" tabIndex={0}>
           <CreditCard size={20} />
           CARTÃO DE CRÉDITO

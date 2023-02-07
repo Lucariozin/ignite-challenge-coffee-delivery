@@ -34,6 +34,11 @@ export const zodSchema = zod.object({
     .max(2)
     .refine((fu) => isNaN(Number(fu)))
     .transform((fu) => fu.toLocaleUpperCase()),
+  paymentMethod: zod.string().refine((paymentMethod) => {
+    const paymentMethods = ['credit-card', 'debit-card', 'cash']
+
+    return paymentMethods.includes(paymentMethod)
+  }),
 })
 
 export type AddressFormInputs = zod.infer<typeof zodSchema>

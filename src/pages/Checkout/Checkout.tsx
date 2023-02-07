@@ -5,6 +5,7 @@ import { useCart } from '@contexts/Cart'
 
 import { DeliveryInformation } from './components/DeliveryInformation'
 import { PaymentInformation } from './components/PaymentInformation'
+
 import { CartItem } from '@components/CartItem'
 
 import { AddressFormInputs, zodSchema } from '@components/AddressForm'
@@ -28,7 +29,7 @@ import {
 } from './Checkout.styles'
 
 export const Checkout = () => {
-  const { register, handleSubmit } = useForm<AddressFormInputs>({
+  const { register, handleSubmit, setValue } = useForm<AddressFormInputs>({
     resolver: zodResolver(zodSchema),
   })
 
@@ -56,7 +57,7 @@ export const Checkout = () => {
 
         <DeliveryInformation register={register} handleSubmit={handleAddressFormSubmit} />
 
-        <PaymentInformation />
+        <PaymentInformation register={register} setValue={setValue} />
       </LeftColumn>
 
       <RightColumn>
