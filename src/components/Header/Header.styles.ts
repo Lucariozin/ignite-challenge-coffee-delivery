@@ -28,7 +28,7 @@ export const LogoAnchor = styled(NavLink)`
   transition: outline-color 0.2s;
 
   &:focus-visible {
-    outline: 1px solid ${({ theme }) => theme.palette.yellow[400]};
+    outline: 1px solid ${({ theme }) => theme.palette.yellow[500]};
     outline-offset: 10px;
   }
 `
@@ -83,14 +83,5 @@ export const CartAnchor = styled(NavLink)`
     background-color: ${({ theme }) => theme.palette.yellow[200]};
     outline: 1px solid ${({ theme }) => theme.palette.yellow[500]};
     outline-offset: 2px;
-  }
-`
-
-export const DisabledCartAnchor = styled(CartAnchor)`
-  filter: brightness(0.9);
-  cursor: not-allowed;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.palette.yellow[100]};
   }
 `
