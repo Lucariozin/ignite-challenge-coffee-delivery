@@ -22,18 +22,18 @@ export const PaymentInformation = () => {
         </PaymentTextContainer>
       </PaymentContainer>
 
-      <PaymentMethodContainer>
-        <PaymentMethodItem>
+      <PaymentMethodContainer type="single" onValueChange={(value) => console.log('Olha o velho', value)}>
+        <PaymentMethodItem value="credit-card" tabIndex={0}>
           <CreditCard size={20} />
           CARTÃO DE CRÉDITO
         </PaymentMethodItem>
 
-        <PaymentMethodItem>
+        <PaymentMethodItem value="debit-card" tabIndex={0}>
           <Bank size={20} />
           CARTÃO DE DÉBITO
         </PaymentMethodItem>
 
-        <PaymentMethodItem>
+        <PaymentMethodItem value="cash" tabIndex={0}>
           <Money size={20} />
           DINHEIRO
         </PaymentMethodItem>

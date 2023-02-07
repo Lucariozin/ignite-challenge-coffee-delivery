@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
+
 export const Container = styled.div`
   padding: 2.5rem;
   border-radius: 6px;
@@ -32,12 +34,12 @@ export const PaymentTextText = styled.p`
   color: ${({ theme }) => theme.palette.gray[700]};
 `
 
-export const PaymentMethodContainer = styled.div`
+export const PaymentMethodContainer = styled(ToggleGroup.Root)`
   display: flex;
   gap: 0.75rem;
 `
 
-export const PaymentMethodItem = styled.div`
+export const PaymentMethodItem = styled(ToggleGroup.Item)`
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -48,12 +50,16 @@ export const PaymentMethodItem = styled.div`
   font-size: 0.75rem;
   color: ${({ theme }) => theme.palette.gray[700]};
 
+  border: 1px solid ${({ theme }) => theme.palette.gray[400]};
   border-radius: 6px;
   background-color: ${({ theme }) => theme.palette.gray[400]};
 
-  user-select: none;
+  outline: 0;
   cursor: pointer;
-  transition: background-color 0.2s;
+  user-select: none;
+  white-space: nowrap;
+  outline-color: transparent;
+  transition: background-color 0.2s, border-color 0.2s, outline-color 0.2s;
 
   & svg {
     color: ${({ theme }) => theme.palette.purple[300]};
@@ -61,5 +67,17 @@ export const PaymentMethodItem = styled.div`
 
   &:hover {
     background-color: ${({ theme }) => theme.palette.gray[500]};
+  }
+
+  &:focus-visible {
+    border: 1px solid ${({ theme }) => theme.palette.yellow[500]};
+  }
+
+  &[data-state='on'] {
+    background-color: ${({ theme }) => theme.palette.purple[100]};
+  }
+
+  &:not(:focus-visible)[data-state='on'] {
+    border: 1px solid ${({ theme }) => theme.palette.purple[300]};
   }
 `
