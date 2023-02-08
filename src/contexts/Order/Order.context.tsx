@@ -14,7 +14,7 @@ export type AddressInformation = {
 type Action = 'SET_ADDRESS_INFORMATION'
 
 type Payload = {
-  newAddressInformation?: AddressInformation
+  newAddressInformation?: Partial<AddressInformation>
 }
 
 interface ReducerAction {
@@ -42,7 +42,11 @@ const actionFunctionsObj: ActionFunctionObj = {
 
     const { newAddressInformation } = payload
 
-    return { ...state, addressInformation: newAddressInformation }
+    const addressInformation = { ...state.addressInformation, ...newAddressInformation }
+
+    const newState = { ...state, addressInformation } as OrderContextState
+
+    return newState
   },
 }
 
@@ -77,7 +81,7 @@ export const useOrder = () => {
   const { dispatch, ...state } = useContext(OrderContext)
 
   const setAddressInformation = useCallback(
-    (newAddressInformation: AddressInformation) => {
+    (newAddressInformation: Partial<AddressInformation>) => {
       dispatch({ type: 'SET_ADDRESS_INFORMATION', payload: { newAddressInformation } })
     },
     [dispatch],

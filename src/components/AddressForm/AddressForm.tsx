@@ -2,6 +2,8 @@ import { UseFormRegister } from 'react-hook-form'
 
 import { AddressFormInputs } from './zodSchema'
 
+import { useOrder } from '@contexts/Order'
+
 import { Input } from '@components/Input'
 
 import {
@@ -18,6 +20,8 @@ interface AddressFormProps {
 }
 
 export const AddressForm = ({ register, handleSubmit = () => {} }: AddressFormProps) => {
+  const { addressInformation } = useOrder()
+
   return (
     <Container id="address-form" onSubmit={handleSubmit}>
       <Input labelText="cep" placeholder="CEP" {...register('cep')} />
@@ -33,8 +37,14 @@ export const AddressForm = ({ register, handleSubmit = () => {} }: AddressFormPr
           <Input labelText="complemento" placeholder="Complemento" {...register('addressComplement')} />
 
           <CityAndFederativeUnitContainer>
-            <Input labelText="cidade" placeholder="Cidade" {...register('city')} />
-            <Input labelText="uf" placeholder="UF" {...register('fu')} />
+            <Input
+              labelText="cidade"
+              placeholder="Cidade"
+              defaultValue={addressInformation?.city ?? ''}
+              {...register('city')}
+            />
+
+            <Input labelText="uf" placeholder="UF" defaultValue={addressInformation?.fu ?? ''} {...register('fu')} />
           </CityAndFederativeUnitContainer>
         </AddressComplementContainer>
       </AddressInputsWrapper>

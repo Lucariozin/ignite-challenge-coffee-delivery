@@ -42,7 +42,13 @@ export const CartContainer = styled.div`
   gap: 0.75rem;
 `
 
-export const Address = styled.span`
+interface AddressProps {
+  isVisible: boolean
+}
+
+export const Address = styled.span<AddressProps>`
+  opacity: ${({ isVisible }) => (isVisible ? '1' : '0')};
+
   display: flex;
   height: 2.375rem;
   align-items: center;
@@ -52,6 +58,8 @@ export const Address = styled.span`
   border-radius: 6px;
   color: ${({ theme }) => theme.palette.purple[500]};
   background-color: ${({ theme }) => theme.palette.purple[100]};
+
+  transition: opacity 0.2s;
 
   & svg {
     fill: ${({ theme }) => theme.palette.purple[300]};

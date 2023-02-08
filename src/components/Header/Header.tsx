@@ -1,12 +1,17 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
+
 import { useCart } from '@contexts/Cart'
+import { useOrder } from '@contexts/Order'
 
 import { Address, CartAnchor, CartContainer, Container, Logo, LogoAnchor, Wrapper } from './Header.styles'
 
 export const Header = () => {
+  const { addressInformation } = useOrder()
   const { items } = useCart()
 
   const itemsQuantity = items.reduce((acc, item) => acc + item.quantity, 0)
+
+  const addressIsVisible = !!(addressInformation?.city && addressInformation?.fu)
 
   return (
     <Container>
@@ -16,9 +21,9 @@ export const Header = () => {
         </LogoAnchor>
 
         <CartContainer>
-          <Address>
+          <Address isVisible={addressIsVisible}>
             <MapPin size={22} weight="fill" />
-            Porto Alegre, RS
+            {addressInformation?.city}, {addressInformation?.fu}
           </Address>
 
           <CartAnchor to="/checkout" title="Ir para a tela de checkout" $itemsQuantity={itemsQuantity}>

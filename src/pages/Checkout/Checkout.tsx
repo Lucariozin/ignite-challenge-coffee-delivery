@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form'
@@ -33,9 +35,12 @@ import {
 } from './Checkout.styles'
 
 export const Checkout = () => {
-  const { register, handleSubmit, setValue } = useForm<AddressFormInputs>({
+  const { register, handleSubmit, setValue, watch } = useForm<AddressFormInputs>({
     resolver: zodResolver(zodSchema),
   })
+
+  const city = watch('city')
+  const fu = watch('fu')?.toUpperCase()
 
   const navigate = useNavigate()
 
@@ -47,6 +52,12 @@ export const Checkout = () => {
 
     navigate('/pedido-confirmado')
   })
+
+  useEffect(() => {
+    if (!city?.length || !fu?.length || fu?.length < 2) return
+
+    setAddressInformation({ city, fu })
+  }, [city, fu, setAddressInformation])
 
   const totalItemsPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
