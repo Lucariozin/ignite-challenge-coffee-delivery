@@ -86,4 +86,9 @@ export const RowStrong = styled.strong`
 export const MotoboyImage = styled.img`
   margin-bottom: -0.8rem;
   user-select: none;
+
+  opacity: 0;
+
+  animation: fadeIn forwards 2s;
+  animation-delay: 500ms;
 `

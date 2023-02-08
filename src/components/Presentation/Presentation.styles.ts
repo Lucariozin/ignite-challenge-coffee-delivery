@@ -10,6 +10,8 @@ export const BlurredBackground = styled.div`
   background-size: cover;
   background-position: center;
 
+  animation: fadeIn forwards 4s;
+
   filter: blur(2rem);
 `
 
