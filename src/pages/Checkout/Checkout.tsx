@@ -2,11 +2,11 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { useCart } from '@contexts/Cart'
-
-import { DeliveryInformation } from './components/DeliveryInformation'
-import { PaymentInformation } from './components/PaymentInformation'
+import { useOrder } from '@contexts/Order'
 
 import { CartItem } from '@components/CartItem'
+import { DeliveryInformation } from './components/DeliveryInformation'
+import { PaymentInformation } from './components/PaymentInformation'
 
 import { AddressFormInputs, zodSchema } from '@components/AddressForm'
 
@@ -34,6 +34,9 @@ export const Checkout = () => {
   })
 
   const { items } = useCart()
+  const { addressInformation } = useOrder()
+
+  console.log(addressInformation)
 
   const handleAddressFormSubmit = handleSubmit((data: AddressFormInputs) => {
     console.log(data)

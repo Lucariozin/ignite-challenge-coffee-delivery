@@ -14,8 +14,6 @@ export const CartContext = createContext<CartContextState>(initialState)
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  console.log(state.items)
-
   const value: CartContextState = {
     ...state,
     dispatch,

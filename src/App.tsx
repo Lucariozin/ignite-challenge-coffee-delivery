@@ -3,7 +3,8 @@ import { ThemeProvider } from 'styled-components'
 import { GlobalStyles } from '@styles/global'
 import { theme } from '@styles/theme'
 
-import { CartProvider } from './contexts/Cart'
+import { CartProvider } from '@contexts/Cart'
+import { OrderProvider } from '@contexts/Order'
 
 import { Router } from './Router'
 
@@ -12,9 +13,11 @@ export const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
 
-      <CartProvider>
-        <Router />
-      </CartProvider>
+      <OrderProvider>
+        <CartProvider>
+          <Router />
+        </CartProvider>
+      </OrderProvider>
     </ThemeProvider>
   )
 }
