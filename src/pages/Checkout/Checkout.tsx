@@ -10,6 +10,8 @@ import { PaymentInformation } from './components/PaymentInformation'
 
 import { AddressFormInputs, zodSchema } from '@components/AddressForm'
 
+import type { AddressInformation } from '@contexts/Order/Order.context'
+
 import {
   CartItemsList,
   ConfirmOrderButton,
@@ -34,12 +36,12 @@ export const Checkout = () => {
   })
 
   const { items } = useCart()
-  const { addressInformation } = useOrder()
+  const { addressInformation, setAddressInformation } = useOrder()
 
   console.log(addressInformation)
 
   const handleAddressFormSubmit = handleSubmit((data: AddressFormInputs) => {
-    console.log(data)
+    setAddressInformation({ ...data, paymentMethod: data.paymentMethod as AddressInformation['paymentMethod'] })
   })
 
   const totalItemsPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)

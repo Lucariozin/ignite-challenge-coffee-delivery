@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useContext, useReducer, Dispatch } from 'react'
+import { createContext, ReactNode, useContext, useReducer, Dispatch, useCallback } from 'react'
 
-type AddressInformation = {
+export type AddressInformation = {
   cep: string
   street: string
   houseNumber: number
@@ -11,9 +11,20 @@ type AddressInformation = {
   paymentMethod: 'credit-card' | 'debit-card' | 'cash'
 }
 
+type Action = 'SET_ADDRESS_INFORMATION'
+
+type Payload = {
+  newAddressInformation?: AddressInformation
+}
+
+interface ReducerAction {
+  type: Action
+  payload?: Payload
+}
+
 interface OrderContextState {
   addressInformation: AddressInformation | null
-  dispatch: Dispatch<any>
+  dispatch: Dispatch<ReducerAction>
 }
 
 const initialState: OrderContextState = {
@@ -23,8 +34,28 @@ const initialState: OrderContextState = {
 
 const OrderContext = createContext<OrderContextState>(initialState)
 
-const reducer = (state: OrderContextState, action: any) => {
-  return state
+type ActionFunctionObj = { [K in Action]: (params: { state: OrderContextState; payload?: Payload }) => OrderContextState } // eslint-disable-line
+
+const actionFunctionsObj: ActionFunctionObj = {
+  SET_ADDRESS_INFORMATION: ({ state, payload }) => {
+    if (!payload?.newAddressInformation) return state
+
+    const { newAddressInformation } = payload
+
+    return { ...state, addressInformation: newAddressInformation }
+  },
+}
+
+const reducer = (state: OrderContextState, action: ReducerAction) => {
+  const { type, payload } = action
+
+  const actionFunction = actionFunctionsObj[type]
+
+  if (!actionFunction) return state
+
+  const newState = actionFunction({ state, payload })
+
+  return newState
 }
 
 interface OrderProviderProps {
@@ -45,5 +76,12 @@ export const OrderProvider = ({ children }: OrderProviderProps) => {
 export const useOrder = () => {
   const { dispatch, ...state } = useContext(OrderContext)
 
-  return { ...state }
+  const setAddressInformation = useCallback(
+    (newAddressInformation: AddressInformation) => {
+      dispatch({ type: 'SET_ADDRESS_INFORMATION', payload: { newAddressInformation } })
+    },
+    [dispatch],
+  )
+
+  return { ...state, setAddressInformation }
 }
