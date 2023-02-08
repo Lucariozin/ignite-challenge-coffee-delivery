@@ -1,6 +1,8 @@
 import { useTheme } from 'styled-components'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 
+import { useOrder } from '@contexts/Order'
+
 import {
   ConfirmedOrderText,
   ConfirmedOrderTitle,
@@ -19,6 +21,16 @@ import {
 export const ConfirmedOrder = () => {
   const { palette } = useTheme()
 
+  const { addressInformation } = useOrder()
+
+  const paymentMethodTextsObj = {
+    'credit-card': 'Cartão de Crédito',
+    'debit-card': 'Cartão de Débito',
+    cash: 'Dinheiro',
+  }
+
+  const paymentMethodText = paymentMethodTextsObj[addressInformation?.paymentMethod ?? 'cash']
+
   return (
     <Container>
       <DeliverySummaryContainer>
@@ -35,10 +47,15 @@ export const ConfirmedOrder = () => {
 
               <RowTextContainer>
                 <RowText>
-                  Entrega em <RowStrong>Rua João Daniel Martinelli, 102</RowStrong>
+                  Entrega em{' '}
+                  <RowStrong>
+                    {addressInformation?.street}, {addressInformation?.houseNumber}
+                  </RowStrong>
                 </RowText>
 
-                <RowText>Farrapos - Porto Alegre, RS</RowText>
+                <RowText>
+                  {addressInformation?.neighborhood} - {addressInformation?.city}, {addressInformation?.fu}
+                </RowText>
               </RowTextContainer>
             </DeliverySummaryRow>
 
@@ -62,7 +79,7 @@ export const ConfirmedOrder = () => {
               <RowTextContainer>
                 <RowText>Pagamento na entrega</RowText>
 
-                <RowStrong>Cartão de Crédito</RowStrong>
+                <RowStrong>{paymentMethodText}</RowStrong>
               </RowTextContainer>
             </DeliverySummaryRow>
           </DeliverySummary>

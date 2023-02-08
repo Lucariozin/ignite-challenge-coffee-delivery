@@ -20,9 +20,10 @@ export const zodSchema = zod.object({
     .refine((city) => isNaN(Number(city))),
   addressComplement: zod
     .string()
-    .min(1)
     .max(255)
-    .refine((city) => isNaN(Number(city))),
+    .refine((city) => isNaN(Number(city)))
+    .optional()
+    .or(zod.literal('')),
   city: zod
     .string()
     .min(1)

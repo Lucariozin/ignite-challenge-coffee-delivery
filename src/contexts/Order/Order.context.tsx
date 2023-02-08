@@ -5,7 +5,7 @@ export type AddressInformation = {
   street: string
   houseNumber: number
   neighborhood: string
-  addressComplement: string
+  addressComplement?: string
   city: string
   fu: string
   paymentMethod: 'credit-card' | 'debit-card' | 'cash'

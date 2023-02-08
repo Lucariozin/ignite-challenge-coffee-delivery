@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -35,13 +37,15 @@ export const Checkout = () => {
     resolver: zodResolver(zodSchema),
   })
 
-  const { items } = useCart()
-  const { addressInformation, setAddressInformation } = useOrder()
+  const navigate = useNavigate()
 
-  console.log(addressInformation)
+  const { items } = useCart()
+  const { setAddressInformation } = useOrder()
 
   const handleAddressFormSubmit = handleSubmit((data: AddressFormInputs) => {
     setAddressInformation({ ...data, paymentMethod: data.paymentMethod as AddressInformation['paymentMethod'] })
+
+    navigate('/pedido-confirmado')
   })
 
   const totalItemsPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
