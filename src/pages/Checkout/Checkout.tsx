@@ -47,7 +47,7 @@ export const Checkout = () => {
 
   const navigate = useNavigate()
 
-  const { items } = useCart()
+  const { items, clearItemsFromTheCart } = useCart()
   const { setAddressInformation } = useOrder()
 
   const handleAddressFormSubmit = handleSubmit(async (data: AddressFormInputs) => {
@@ -57,6 +57,7 @@ export const Checkout = () => {
 
     setIsLoading(false)
 
+    clearItemsFromTheCart()
     setAddressInformation({ ...data, paymentMethod: data.paymentMethod as AddressInformation['paymentMethod'] })
 
     navigate('/pedido-confirmado')

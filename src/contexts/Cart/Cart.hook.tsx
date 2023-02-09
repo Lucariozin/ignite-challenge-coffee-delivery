@@ -2,17 +2,9 @@ import { useCallback, useContext } from 'react'
 
 import { CartContext } from './Cart.context'
 
-import type { CartContextState, Item } from './Cart.types'
+import type { Item } from './Cart.types'
 
-interface UseCartState extends Omit<CartContextState, 'dispatch'> {
-  findItemById: (id: string) => Item | undefined
-  addNewItemToTheCart: (item: Item) => void
-  removeItemFromTheCart: (id: string) => void
-  incrementItemQuantity: (id: string) => void
-  decrementItemQuantity: (id: string) => void
-}
-
-export const useCart = (): UseCartState => {
+export const useCart = () => {
   const { dispatch, items, ...state } = useContext(CartContext)
 
   const findItemById = useCallback(
@@ -52,6 +44,10 @@ export const useCart = (): UseCartState => {
     [dispatch],
   )
 
+  const clearItemsFromTheCart = useCallback(() => {
+    dispatch({ type: 'CLEAR_ITEMS_FROM_THE_CART' })
+  }, [dispatch])
+
   return {
     ...state,
     items,
@@ -60,5 +56,6 @@ export const useCart = (): UseCartState => {
     removeItemFromTheCart,
     incrementItemQuantity,
     decrementItemQuantity,
+    clearItemsFromTheCart,
   }
 }

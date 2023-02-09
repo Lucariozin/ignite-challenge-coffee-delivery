@@ -5,6 +5,7 @@ type Action =
   | 'REMOVE_ITEM_FROM_THE_CART'
   | 'INCREMENT_ITEM_QUANTITY'
   | 'DECREMENT_ITEM_QUANTITY'
+  | 'CLEAR_ITEMS_FROM_THE_CART'
 
 type Payload = {
   item?: Item
@@ -62,6 +63,9 @@ const actionFunctionsObj: ActionFunctionObj = {
       .filter((item) => item.quantity !== 0)
 
     return { ...state, items: newItems }
+  },
+  CLEAR_ITEMS_FROM_THE_CART: ({ state }) => {
+    return { ...state, items: [] }
   },
 }
 
