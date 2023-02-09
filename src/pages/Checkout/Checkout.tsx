@@ -14,7 +14,7 @@ import { PaymentInformation } from './components/PaymentInformation'
 
 import { AddressFormInputs, zodSchema } from '@components/AddressForm'
 
-import type { AddressInformation } from '@contexts/Order/Order.context'
+import type { AddressInformation } from '@contexts/Order/Order.types'
 
 import {
   CartItemsList,
