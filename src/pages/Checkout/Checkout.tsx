@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -22,6 +22,7 @@ import {
   ConfirmOrderContainer,
   Container,
   LeftColumn,
+  Loader,
   OrderSummaryContainer,
   OrderTitle,
   RightColumn,
@@ -35,6 +36,8 @@ import {
 } from './Checkout.styles'
 
 export const Checkout = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
   const { register, handleSubmit, setValue, watch } = useForm<AddressFormInputs>({
     resolver: zodResolver(zodSchema),
   })
@@ -47,7 +50,13 @@ export const Checkout = () => {
   const { items } = useCart()
   const { setAddressInformation } = useOrder()
 
-  const handleAddressFormSubmit = handleSubmit((data: AddressFormInputs) => {
+  const handleAddressFormSubmit = handleSubmit(async (data: AddressFormInputs) => {
+    setIsLoading(true)
+
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    setIsLoading(false)
+
     setAddressInformation({ ...data, paymentMethod: data.paymentMethod as AddressInformation['paymentMethod'] })
 
     navigate('/pedido-confirmado')
@@ -58,6 +67,10 @@ export const Checkout = () => {
 
     setAddressInformation({ city, fu })
   }, [city, fu, setAddressInformation])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
 
   const totalItemsPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
@@ -107,8 +120,8 @@ export const Checkout = () => {
             </SummaryTotalContainer>
           </OrderSummaryContainer>
 
-          <ConfirmOrderButton type="submit" form="address-form" disabled={cartIsEmpty}>
-            CONFIRMAR PEDIDO
+          <ConfirmOrderButton type="submit" form="address-form" disabled={cartIsEmpty || isLoading}>
+            {isLoading ? <Loader /> : 'CONFIRMAR PEDIDO'}
           </ConfirmOrderButton>
         </ConfirmOrderContainer>
       </RightColumn>

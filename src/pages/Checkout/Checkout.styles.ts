@@ -25,6 +25,7 @@ export const RightColumn = styled.main`
   gap: 0.75rem;
   width: 100%;
   max-width: 28rem;
+  margin-bottom: 5rem;
 `
 
 export const SelectedCoffeesTitle = styled.h2`
@@ -123,4 +124,28 @@ export const ConfirmOrderButton = styled.button`
     filter: brightness(0.9);
     cursor: not-allowed;
   }
+`
+
+export const Loader = styled.span`
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 auto;
+
+  border-top: 4px solid ${({ theme }) => theme.palette.white};
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid ${({ theme }) => theme.palette.white};
+  border-left: 4px solid ${({ theme }) => theme.palette.white};
+  border-radius: 50%;
+
+  animation: rotate infinite 1s;
 `
