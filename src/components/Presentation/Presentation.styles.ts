@@ -21,6 +21,10 @@ export const Container = styled.section`
   padding: 5.875rem 0;
   position: relative;
   z-index: 1;
+
+  ${({ theme }) => theme.breakpoints.down(1200)} {
+    justify-content: center;
+  }
 `
 
 export const PresentationContainer = styled.div`
@@ -95,6 +99,10 @@ export const CoffeeImageContainer = styled.div`
   opacity: 0;
   position: relative;
   animation: fadeIn 1.2s forwards 0.4s;
+
+  ${({ theme }) => theme.breakpoints.down(1200)} {
+    display: none;
+  }
 `
 
 export const CoffeeImage = styled.img`

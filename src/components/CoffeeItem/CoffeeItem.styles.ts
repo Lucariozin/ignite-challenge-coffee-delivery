@@ -10,6 +10,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 16rem;
   padding: 1.25rem 1.5rem;
+  margin: 0 auto;
 
   border-radius: 6px 2.25rem;
   background-color: ${({ theme }) => theme.palette.gray[200]};

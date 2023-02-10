@@ -12,7 +12,7 @@ export const OurCoffeesTitle = styled.h2`
 
 export const CoffeeList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 2rem;
   margin-top: 3.375rem;
 `
