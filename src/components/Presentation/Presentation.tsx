@@ -27,7 +27,9 @@ export const Presentation = () => {
 
       <Container>
         <PresentationContainer>
-          <Title>Encontre o café perfeito para qualquer hora do dia</Title>
+          <Title>
+            Encontre o café perfeito <br /> para qualquer hora do dia
+          </Title>
 
           <Text>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</Text>
 

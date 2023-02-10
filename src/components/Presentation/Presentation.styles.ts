@@ -36,6 +36,10 @@ export const PresentationContainer = styled.div`
   max-width: 35.5rem;
 
   animation: fadeIn 2s forwards;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    align-items: left;
+  }
 `
 
 export const Title = styled.h1`
@@ -43,17 +47,37 @@ export const Title = styled.h1`
   font-weight: 800;
   line-height: 4rem;
   color: ${({ theme }) => theme.palette.gray[900]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: 2rem;
+    line-height: 2.75rem;
+  }
+
+  ${({ theme }) => theme.breakpoints.down(410)} {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
 `
 
 export const Text = styled.p`
   font-size: 1.25rem;
   color: ${({ theme }) => theme.palette.gray[800]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: 1rem;
+    max-width: 24rem;
+  }
 `
 
 export const AdvantagesContainer = styled.div`
   display: flex;
   gap: 2.5rem;
   margin-top: 3.125rem;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
 `
 
 export const LeftColumn = styled.div`
