@@ -19,6 +19,11 @@ export const CoffeeImage = styled.img`
   position: relative;
   margin-top: -2.5rem;
   user-select: none;
+
+  opacity: 0;
+
+  animation: fadeIn forwards 2s;
+  animation-delay: 500ms;
 `
 
 export const LabelList = styled.div`
