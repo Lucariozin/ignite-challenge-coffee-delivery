@@ -14,6 +14,10 @@ export const Container = styled.div`
 
   border-radius: 6px 2.25rem;
   background-color: ${({ theme }) => theme.palette.gray[200]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    max-width: 14.375rem;
+  }
 `
 
 export const CoffeeImage = styled.img`
@@ -25,6 +29,11 @@ export const CoffeeImage = styled.img`
 
   animation: fadeIn forwards 2s;
   animation-delay: 500ms;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    width: 100px;
+    height: 100px;
+  }
 `
 
 export const LabelList = styled.div`
@@ -51,6 +60,10 @@ export const CoffeeName = styled.h3`
   font-size: 1.25rem;
   margin-top: 0.75rem;
   color: ${({ theme }) => theme.palette.gray[800]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: 1rem;
+  }
 `
 
 export const Description = styled.p`
@@ -58,6 +71,10 @@ export const Description = styled.p`
   font-size: 0.875rem;
   margin-top: 4px;
   color: ${({ theme }) => theme.palette.gray[600]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: 0.75rem;
+  }
 `
 
 export const PriceContainer = styled.div`
@@ -66,6 +83,12 @@ export const PriceContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 2rem;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
 `
 
 export const Price = styled.span`
@@ -76,6 +99,10 @@ export const Price = styled.span`
     font-family: 'Baloo 2', cursive;
     font-size: 1.5rem;
     font-weight: 800;
+
+    ${({ theme }) => theme.breakpoints.down('md')} {
+      font-size: 1.25rem;
+    }
   }
 `
 
