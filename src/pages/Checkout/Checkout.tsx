@@ -38,7 +38,7 @@ import {
 export const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false)
 
-  const { register, handleSubmit, setValue, watch } = useForm<AddressFormInputs>({
+  const { register, handleSubmit, setValue, watch, formState } = useForm<AddressFormInputs>({
     resolver: zodResolver(zodSchema),
   })
 
@@ -89,9 +89,9 @@ export const Checkout = () => {
       <LeftColumn>
         <OrderTitle>Complete seu pedido</OrderTitle>
 
-        <DeliveryInformation register={register} handleSubmit={handleAddressFormSubmit} />
+        <DeliveryInformation register={register} errors={formState.errors} handleSubmit={handleAddressFormSubmit} />
 
-        <PaymentInformation register={register} setValue={setValue} />
+        <PaymentInformation register={register} errors={formState.errors} setValue={setValue} />
       </LeftColumn>
 
       <RightColumn>

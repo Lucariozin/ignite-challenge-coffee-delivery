@@ -2,10 +2,16 @@ import styled from 'styled-components'
 
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
-export const Container = styled.div`
+interface ContainerProps {
+  error: boolean
+}
+
+export const Container = styled.div<ContainerProps>`
   padding: 2.5rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.palette.gray[200]};
+
+  border: 1px solid ${({ theme, error }) => (error ? theme.palette.red[400] : theme.palette.gray[200])};
 `
 
 export const PaymentContainer = styled.div`

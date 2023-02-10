@@ -20,7 +20,11 @@ export const Label = styled.label`
   background-color: ${({ theme }) => theme.palette.gray[200]};
 `
 
-export const InputComponent = styled.input`
+interface InputComponentProps {
+  error: boolean
+}
+
+export const InputComponent = styled.input<InputComponentProps>`
   width: 100%;
   height: 2.625rem;
   padding: 0 0.75rem;
@@ -31,7 +35,7 @@ export const InputComponent = styled.input`
   outline: 0;
   outline-color: transparent;
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.palette.gray[400]};
+  border: 1px solid ${({ theme, error }) => (error ? theme.palette.red[400] : theme.palette.gray[400])};
   background-color: ${({ theme }) => theme.palette.gray[300]};
 
   transition: border-color 0.2s;

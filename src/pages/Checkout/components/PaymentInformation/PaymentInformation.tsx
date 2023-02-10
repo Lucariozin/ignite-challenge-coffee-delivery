@@ -1,4 +1,4 @@
-import { UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 
 import type { AddressFormInputs } from '@components/AddressForm'
@@ -14,15 +14,16 @@ import {
 } from './PaymentInformation.styles'
 
 interface PaymentInformationProps {
+  errors: FieldErrors<AddressFormInputs>
   register: UseFormRegister<AddressFormInputs>
   setValue: UseFormSetValue<AddressFormInputs>
 }
 
-export const PaymentInformation = ({ register, setValue }: PaymentInformationProps) => {
+export const PaymentInformation = ({ errors, register, setValue }: PaymentInformationProps) => {
   const onPaymentMethodChange = (value: 'credit-card' | 'debit-card' | 'cash' | '') => setValue('paymentMethod', value)
 
   return (
-    <Container>
+    <Container error={!!errors?.paymentMethod}>
       <PaymentContainer>
         <CurrencyDollar size={24} />
 

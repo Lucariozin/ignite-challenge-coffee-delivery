@@ -1,4 +1,4 @@
-import { UseFormRegister } from 'react-hook-form'
+import type { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { MapPinLine } from 'phosphor-react'
 
@@ -14,10 +14,11 @@ import {
 
 interface DeliveryInformationProps {
   register: UseFormRegister<AddressFormInputs>
+  errors: FieldErrors<AddressFormInputs>
   handleSubmit: () => void
 }
 
-export const DeliveryInformation = ({ register, handleSubmit }: DeliveryInformationProps) => {
+export const DeliveryInformation = ({ register, errors, handleSubmit }: DeliveryInformationProps) => {
   return (
     <Container>
       <AddressContainer>
@@ -29,7 +30,7 @@ export const DeliveryInformation = ({ register, handleSubmit }: DeliveryInformat
         </AddressTextContainer>
       </AddressContainer>
 
-      <AddressForm register={register} handleSubmit={handleSubmit} />
+      <AddressForm register={register} errors={errors} handleSubmit={handleSubmit} />
     </Container>
   )
 }
