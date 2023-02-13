@@ -13,6 +13,10 @@ export const Container = styled.form`
 export const AddressInputsWrapper = styled.div`
   display: flex;
   gap: 0.875rem;
+
+  ${({ theme }) => theme.breakpoints.down(1000)} {
+    flex-direction: column;
+  }
 `
 
 export const HouseNumberAndDistrictContainer = styled.div`

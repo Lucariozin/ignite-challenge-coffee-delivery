@@ -26,6 +26,7 @@ import {
   OrderSummaryContainer,
   OrderTitle,
   RightColumn,
+  SeeAllItemsButton,
   SelectedCoffeesTitle,
   SummaryPrice,
   SummaryRow,
@@ -34,6 +35,7 @@ import {
   SummaryTotalPrice,
   SummaryTotalText,
 } from './Checkout.styles'
+import { CaretRight } from 'phosphor-react'
 
 export const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -103,6 +105,11 @@ export const Checkout = () => {
               <CartItem key={id} id={id} name={name} image={image} price={price} quantity={quantity} />
             ))}
           </CartItemsList>
+
+          <SeeAllItemsButton>
+            Ver todos
+            <CaretRight size={18} weight="bold" />
+          </SeeAllItemsButton>
 
           <OrderSummaryContainer>
             <SummaryRow>

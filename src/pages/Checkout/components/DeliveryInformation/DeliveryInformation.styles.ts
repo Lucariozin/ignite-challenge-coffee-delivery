@@ -4,6 +4,10 @@ export const Container = styled.div`
   padding: 2.5rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.palette.gray[200]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 1.5rem;
+  }
 `
 
 export const AddressContainer = styled.div`

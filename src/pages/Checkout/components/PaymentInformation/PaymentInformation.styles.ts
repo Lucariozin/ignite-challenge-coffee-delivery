@@ -12,6 +12,10 @@ export const Container = styled.div<ContainerProps>`
   background-color: ${({ theme }) => theme.palette.gray[200]};
 
   border: 1px solid ${({ theme, error }) => (error ? theme.palette.red[400] : theme.palette.gray[200])};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 1.5rem;
+  }
 `
 
 export const PaymentContainer = styled.div`
@@ -43,6 +47,10 @@ export const PaymentTextText = styled.p`
 export const PaymentMethodContainer = styled(ToggleGroup.Root)`
   display: flex;
   gap: 0.75rem;
+
+  ${({ theme }) => theme.breakpoints.down(1100)} {
+    flex-direction: column;
+  }
 `
 
 export const PaymentMethodItem = styled(ToggleGroup.Item)`

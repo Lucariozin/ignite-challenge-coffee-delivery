@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 2.5rem;
+  gap: 1rem;
+  margin: 2.5rem 0 5rem 0;
 `
 
 export const LeftColumn = styled.section`
@@ -12,6 +13,11 @@ export const LeftColumn = styled.section`
   gap: 0.75rem;
   width: 100%;
   max-width: 40rem;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    max-width: 26.625rem;
+    margin: 0 auto;
+  }
 `
 
 export const OrderTitle = styled.h1`
@@ -25,18 +31,40 @@ export const RightColumn = styled.main`
   gap: 0.75rem;
   width: 100%;
   max-width: 28rem;
-  margin-bottom: 5rem;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    max-width: none;
+    background-color: ${({ theme }) => theme.palette.gray[200]};
+
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+
+    box-shadow: 0rem 1rem 1rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
 `
 
 export const SelectedCoffeesTitle = styled.h2`
   font-size: 1.125rem;
   color: ${({ theme }) => theme.palette.gray[800]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    margin: 1rem 0 0 1.5rem;
+  }
 `
 
 export const ConfirmOrderContainer = styled.div`
   padding: 2.5rem;
   border-radius: 6px 2.75rem;
   background-color: ${({ theme }) => theme.palette.gray[200]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+  }
 `
 
 export const CartItemsList = styled.div`
@@ -48,6 +76,24 @@ export const CartItemsList = styled.div`
     padding: 2rem 0;
     border-bottom: 1px solid ${({ theme }) => theme.palette.gray[400]};
   }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    display: none;
+  }
+`
+
+export const SeeAllItemsButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  background-color: transparent;
+  border: 0;
+
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  color: ${({ theme }) => theme.palette.yellow[500]};
 `
 
 export const OrderSummaryContainer = styled.div`
@@ -55,6 +101,11 @@ export const OrderSummaryContainer = styled.div`
   flex-direction: column;
   gap: 0.875rem;
   margin: 1.5rem 0;
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    margin: 1rem 0;
+    gap: 0.5rem;
+  }
 `
 
 export const SummaryRow = styled.div`
@@ -66,10 +117,18 @@ export const SummaryRow = styled.div`
 export const SummaryText = styled.span`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.palette.gray[700]};
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    font-size: 0.75rem;
+  }
 `
 
 export const SummaryPrice = styled.span`
   color: ${({ theme }) => theme.palette.gray[700]};
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    font-size: 0.875rem;
+  }
 `
 
 export const SummaryTotalContainer = styled.div`
@@ -83,6 +142,10 @@ export const SummaryTotalText = styled.h3`
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
   color: ${({ theme }) => theme.palette.gray[800]};
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    font-size: 1rem;
+  }
 `
 
 export const SummaryTotalPrice = styled.span`
@@ -90,11 +153,18 @@ export const SummaryTotalPrice = styled.span`
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
   color: ${({ theme }) => theme.palette.gray[800]};
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    font-size: 1rem;
+  }
 `
 
 export const ConfirmOrderButton = styled.button`
+  display: block;
   width: 100%;
+  max-width: 23rem;
   height: 2.875rem;
+  margin: 0 auto;
 
   color: #ffffff;
   font-weight: 700;
