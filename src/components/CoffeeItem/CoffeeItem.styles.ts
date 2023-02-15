@@ -138,4 +138,14 @@ export const CartAnchor = styled(NavLink)`
     outline: 1px solid ${({ theme }) => theme.palette.purple[500]};
     outline-offset: 2px;
   }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    width: 28.8px;
+    height: 28.8px;
+
+    & > svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
 `

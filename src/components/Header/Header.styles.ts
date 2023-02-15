@@ -31,6 +31,13 @@ export const LogoAnchor = styled(NavLink)`
     outline: 1px solid ${({ theme }) => theme.palette.yellow[500]};
     outline-offset: 10px;
   }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    & > img {
+      width: 4.2rem;
+      height: 2rem;
+    }
+  }
 `
 
 export const Logo = styled.img`
@@ -63,6 +70,10 @@ export const Address = styled.span<AddressProps>`
 
   & svg {
     fill: ${({ theme }) => theme.palette.purple[300]};
+  }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    font-size: 0.875rem;
   }
 `
 

@@ -8,6 +8,11 @@ export const Container = styled.div`
   padding: 9.5px;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.palette.gray[400]};
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    height: 1.8rem;
+    font-size: 0.875rem;
+  }
 `
 
 export const ItemsAmount = styled.span`
