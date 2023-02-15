@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-
 import { useNavigate } from 'react-router-dom'
+
+import { CaretRight } from 'phosphor-react'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -35,7 +36,6 @@ import {
   SummaryTotalPrice,
   SummaryTotalText,
 } from './Checkout.styles'
-import { CaretRight } from 'phosphor-react'
 
 export const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -106,9 +106,9 @@ export const Checkout = () => {
             ))}
           </CartItemsList>
 
-          <SeeAllItemsButton>
+          <SeeAllItemsButton type="button">
             Ver todos
-            <CaretRight size={18} weight="bold" />
+            <CaretRight size={16} weight="bold" />
           </SeeAllItemsButton>
 
           <OrderSummaryContainer>

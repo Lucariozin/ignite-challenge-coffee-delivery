@@ -16,7 +16,7 @@ export const LeftColumn = styled.section`
 
   ${({ theme }) => theme.breakpoints.down('md')} {
     max-width: 26.625rem;
-    margin: 0 auto;
+    margin: 0 auto 14rem auto;
   }
 `
 
@@ -53,7 +53,7 @@ export const SelectedCoffeesTitle = styled.h2`
   color: ${({ theme }) => theme.palette.gray[800]};
 
   ${({ theme }) => theme.breakpoints.down('md')} {
-    margin: 1rem 0 0 1.5rem;
+    margin: 1rem 0 0 1rem;
   }
 `
 
@@ -63,7 +63,7 @@ export const ConfirmOrderContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.gray[200]};
 
   ${({ theme }) => theme.breakpoints.down('md')} {
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    padding: 1rem;
   }
 `
 
@@ -77,13 +77,13 @@ export const CartItemsList = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.palette.gray[400]};
   }
 
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     display: none;
   }
 `
 
 export const SeeAllItemsButton = styled.button`
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.2rem;
 
@@ -94,6 +94,10 @@ export const SeeAllItemsButton = styled.button`
   font-weight: 700;
 
   color: ${({ theme }) => theme.palette.yellow[500]};
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    display: flex;
+  }
 `
 
 export const OrderSummaryContainer = styled.div`
