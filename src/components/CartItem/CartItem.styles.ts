@@ -8,6 +8,11 @@ export const Container = styled.div`
 
 export const ItemImage = styled.img`
   user-select: none;
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    width: 3rem;
+    height: 3rem;
+  }
 `
 
 export const ActionsContainer = styled.div`
@@ -21,6 +26,10 @@ export const ItemName = styled.h4`
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
   color: ${({ theme }) => theme.palette.gray[800]};
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    font-size: 0.875rem;
+  }
 `
 
 export const Actions = styled.div`
@@ -59,10 +68,24 @@ export const RemoveItemButton = styled.button`
     outline: 1px solid ${({ theme }) => theme.palette.yellow[500]};
     outline-offset: 2px;
   }
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    height: 1.8rem;
+    font-size: 10px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
 `
 
 export const ItemPrice = styled.span`
   font-weight: 700;
   color: ${({ theme }) => theme.palette.gray[700]};
   margin: 0 0 auto auto;
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    font-size: 0.875rem;
+  }
 `

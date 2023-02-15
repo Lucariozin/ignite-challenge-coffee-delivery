@@ -68,16 +68,17 @@ export const CartItemsList = styled.div`
   overflow-y: scroll;
 
   & > div:first-child {
-    padding: 8px 0 2rem;
+    padding: 8px 0 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.palette.gray[400]};
   }
 
   & > div:last-child {
     border-bottom: none;
+    padding-bottom: 2rem;
   }
 
   & > div + div {
-    padding: 2rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid ${({ theme }) => theme.palette.gray[400]};
   }
 `
