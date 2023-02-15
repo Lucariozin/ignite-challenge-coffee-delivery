@@ -98,6 +98,10 @@ export const SeeAllItemsButton = styled.button`
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: flex;
   }
+
+  &:disabled {
+    opacity: 0.3;
+  }
 `
 
 export const OrderSummaryContainer = styled.div`

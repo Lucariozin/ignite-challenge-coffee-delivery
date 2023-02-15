@@ -12,6 +12,7 @@ import { useOrder } from '@contexts/Order'
 import { CartItem } from '@components/CartItem'
 import { DeliveryInformation } from './components/DeliveryInformation'
 import { PaymentInformation } from './components/PaymentInformation'
+import { CartItemsModal } from './components/CartItemsModal'
 
 import { AddressFormInputs, zodSchema } from '@components/AddressForm'
 
@@ -38,6 +39,8 @@ import {
 } from './Checkout.styles'
 
 export const Checkout = () => {
+  const [cartItemsModalIsOpen, setCartItemsModalIsOpen] = useState(false)
+
   const [isLoading, setIsLoading] = useState(false)
 
   const { register, handleSubmit, setValue, watch, formState } = useForm<AddressFormInputs>({
@@ -65,6 +68,9 @@ export const Checkout = () => {
     navigate('/pedido-confirmado')
   })
 
+  const openCartItemsModal = () => setCartItemsModalIsOpen(true)
+  const closeCartItemsModal = () => setCartItemsModalIsOpen(false)
+
   useEffect(() => {
     if (!city?.length || !fu?.length || fu?.length < 2) return
 
@@ -87,52 +93,56 @@ export const Checkout = () => {
   const cartIsEmpty = !items.length
 
   return (
-    <Container>
-      <LeftColumn>
-        <OrderTitle>Complete seu pedido</OrderTitle>
+    <>
+      <Container>
+        <LeftColumn>
+          <OrderTitle>Complete seu pedido</OrderTitle>
 
-        <DeliveryInformation register={register} errors={formState.errors} handleSubmit={handleAddressFormSubmit} />
+          <DeliveryInformation register={register} errors={formState.errors} handleSubmit={handleAddressFormSubmit} />
 
-        <PaymentInformation register={register} errors={formState.errors} setValue={setValue} />
-      </LeftColumn>
+          <PaymentInformation register={register} errors={formState.errors} setValue={setValue} />
+        </LeftColumn>
 
-      <RightColumn>
-        <SelectedCoffeesTitle>Cafés selecionados</SelectedCoffeesTitle>
+        <RightColumn>
+          <SelectedCoffeesTitle>Cafés selecionados</SelectedCoffeesTitle>
 
-        <ConfirmOrderContainer>
-          <CartItemsList>
-            {items.map(({ id, name, image, price, quantity }) => (
-              <CartItem key={id} id={id} name={name} image={image} price={price} quantity={quantity} />
-            ))}
-          </CartItemsList>
+          <ConfirmOrderContainer>
+            <CartItemsList>
+              {items.map(({ id, name, image, price, quantity }) => (
+                <CartItem key={id} id={id} name={name} image={image} price={price} quantity={quantity} />
+              ))}
+            </CartItemsList>
 
-          <SeeAllItemsButton type="button">
-            Ver todos
-            <CaretRight size={16} weight="bold" />
-          </SeeAllItemsButton>
+            <SeeAllItemsButton type="button" onClick={openCartItemsModal} disabled={!items.length}>
+              Ver todos
+              <CaretRight size={16} weight="bold" />
+            </SeeAllItemsButton>
 
-          <OrderSummaryContainer>
-            <SummaryRow>
-              <SummaryText>Total de itens</SummaryText>
-              <SummaryPrice>{formattedTotalItemsPrice}</SummaryPrice>
-            </SummaryRow>
+            <OrderSummaryContainer>
+              <SummaryRow>
+                <SummaryText>Total de itens</SummaryText>
+                <SummaryPrice>{formattedTotalItemsPrice}</SummaryPrice>
+              </SummaryRow>
 
-            <SummaryRow>
-              <SummaryText>Entrega</SummaryText>
-              <SummaryPrice>{formattedDeliveryFee}</SummaryPrice>
-            </SummaryRow>
+              <SummaryRow>
+                <SummaryText>Entrega</SummaryText>
+                <SummaryPrice>{formattedDeliveryFee}</SummaryPrice>
+              </SummaryRow>
 
-            <SummaryTotalContainer>
-              <SummaryTotalText>Total</SummaryTotalText>
-              <SummaryTotalPrice>{formattedTotalPrice}</SummaryTotalPrice>
-            </SummaryTotalContainer>
-          </OrderSummaryContainer>
+              <SummaryTotalContainer>
+                <SummaryTotalText>Total</SummaryTotalText>
+                <SummaryTotalPrice>{formattedTotalPrice}</SummaryTotalPrice>
+              </SummaryTotalContainer>
+            </OrderSummaryContainer>
 
-          <ConfirmOrderButton type="submit" form="address-form" disabled={cartIsEmpty || isLoading}>
-            {isLoading ? <Loader /> : 'CONFIRMAR PEDIDO'}
-          </ConfirmOrderButton>
-        </ConfirmOrderContainer>
-      </RightColumn>
-    </Container>
+            <ConfirmOrderButton type="submit" form="address-form" disabled={cartIsEmpty || isLoading}>
+              {isLoading ? <Loader /> : 'CONFIRMAR PEDIDO'}
+            </ConfirmOrderButton>
+          </ConfirmOrderContainer>
+        </RightColumn>
+      </Container>
+
+      <CartItemsModal open={cartItemsModalIsOpen} closeModal={closeCartItemsModal} items={items} />
+    </>
   )
 }
