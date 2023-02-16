@@ -4,4 +4,4 @@
 
 ## Versão desktop:
 
-<img src="./public/readme-images/home-desktop-01" alt="" />
+<img src="./public/readme-images/home-desktop-01.png" alt="" />
