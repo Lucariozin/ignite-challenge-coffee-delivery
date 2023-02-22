@@ -4,4 +4,6 @@
 
 ## Versão desktop:
 
+### Home
+
 <img src="./public/readme-images/home-desktop-01.png" alt="" />
