@@ -15,3 +15,9 @@
 ### Confirmed Order
 
 <img src="./public/readme-images/confirmed-order-desktop-01.png" alt="" />
+
+## Versão mobile:
+
+### Home
+
+<img src="./public/readme-images/home-mobile-01.png" alt="" />
