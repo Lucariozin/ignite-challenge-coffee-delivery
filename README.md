@@ -11,3 +11,7 @@
 ### Checkout
 
 <img src="./public/readme-images/checkout-desktop-01.png" alt="" />
+
+### Confirmed Order
+
+<img src="./public/readme-images/confirmed-order-desktop-01.png" alt="" />
