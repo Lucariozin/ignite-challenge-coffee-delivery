@@ -7,3 +7,7 @@
 ### Home
 
 <img src="./public/readme-images/home-desktop-01.png" alt="" />
+
+### Checkout
+
+<img src="./public/readme-images/checkout-desktop-01.png" alt="" />
