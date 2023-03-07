@@ -21,3 +21,7 @@
 ### Home
 
 <img src="./public/readme-images/home-mobile-01.png" alt="" />
+
+### Checkout
+
+<img src="./public/readme-images/checkout-mobile-01.png" alt="" />
