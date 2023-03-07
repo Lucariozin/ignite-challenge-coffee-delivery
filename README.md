@@ -12,7 +12,7 @@
 
 <img src="./public/readme-images/checkout-desktop-01.png" alt="" />
 
-### Confirmed Order
+### Pedido Confirmado
 
 <img src="./public/readme-images/confirmed-order-desktop-01.png" alt="" />
 
