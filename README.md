@@ -4,12 +4,9 @@
 
 ## Versão desktop:
 
-### Home              ### Checkout
+### Home
 
-<div>
-  <img src="./public/readme-images/home-desktop-01.png" alt="" />
-  <img src="./public/readme-images/checkout-desktop-01.png" alt="" />
-</div>
+<img src="./public/readme-images/home-desktop-01.png" alt="" />
 
 ### Checkout
 
@@ -21,9 +18,12 @@
 
 ## Versão mobile:
 
-### Home
+### Home                       ### Checkout
 
-<img src="./public/readme-images/home-mobile-01.png" alt="" />
+<div>
+  <img src="./public/readme-images/home-mobile-01.png" alt="" />
+  <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
+<div/>
 
 ### Checkout
 
