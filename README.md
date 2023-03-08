@@ -28,3 +28,7 @@
   <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
   <img src="./public/readme-images/checkout-mobile-02.png" alt="" />
 </div>
+
+### Pedido Confirmado
+
+<img src="./public/readme-images/confirmed-order-mobile-01.png" alt="" />
