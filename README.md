@@ -21,8 +21,13 @@
 ### Home --------------------------- Checkout
 
 <div>
-  <img src="./public/readme-images/home-mobile-01.png" alt="" />
-  <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
+  <div>
+    <img src="./public/readme-images/home-mobile-01.png" alt="" />
+  </div>
+  
+  <div>
+    <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
+  </div>
 <div/>
 
 ### Checkout
