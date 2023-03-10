@@ -21,13 +21,13 @@
 ### Home⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Checkout
 
 <div>
-  <img src="./public/readme-images/home-mobile-01.png" alt="" />
+  <img src="./public/readme-images/home-mobile-01.png" alt="" />⠀⠀⠀⠀⠀
   <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
 <div/>
 
 ### Checkout⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Pedido Confirmado
 
 <div>
-  <img src="./public/readme-images/checkout-mobile-02.png" alt="" />
+  <img src="./public/readme-images/checkout-mobile-02.png" alt="" />⠀⠀⠀⠀⠀
   <img src="./public/readme-images/confirmed-order-mobile-01.png" alt="" />
 </div>
