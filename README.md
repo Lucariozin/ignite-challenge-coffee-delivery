@@ -18,7 +18,7 @@
 
 ## Versão mobile:
 
-### Home                       ### Checkout
+### Home --------------------------- Checkout
 
 <div>
   <img src="./public/readme-images/home-mobile-01.png" alt="" />
