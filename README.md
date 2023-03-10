@@ -21,11 +21,11 @@
 ### Home --------------------------- Checkout
 
 <div>
-  <div>
+  <div width="730px">
     <img src="./public/readme-images/home-mobile-01.png" alt="" />
   </div>
   
-  <div>
+  <div width="730px">
     <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
   </div>
 <div/>
