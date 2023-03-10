@@ -18,16 +18,11 @@
 
 ## Versão mobile:
 
-### Home --------------------------- Checkout
+### Home -------------------------------------- Checkout
 
 <div>
-  <div width="730px">
-    <img src="./public/readme-images/home-mobile-01.png" alt="" />
-  </div>
-  
-  <div width="730px">
-    <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
-  </div>
+  <img src="./public/readme-images/home-mobile-01.png" alt="" />
+  <img src="./public/readme-images/checkout-mobile-01.png" alt="" />
 <div/>
 
 ### Checkout
