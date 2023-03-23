@@ -16,7 +16,7 @@
 
 <img src="./public/readme-images/confirmed-order-desktop-01.png" alt="" />
 
-## Versão mobile:
+## Mobile:
 
 ### Home | Checkout
 
