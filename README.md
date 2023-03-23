@@ -2,7 +2,7 @@
 
 - Projeto desenvolvido na trilha de ReactJS do Ignite da Rocketseat.
 
-## Versão desktop:
+## Desktop:
 
 ### Home
 
